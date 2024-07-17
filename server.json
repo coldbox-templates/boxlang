@@ -1,0 +1,18 @@
+{
+    "name":"BX-ColdBox",
+    "app":{
+        "cfengine":"boxlang@be"
+    },
+    "jvm":{
+        "javaVersion":"openjdk21_jdk"
+    },
+    "web":{
+        "rewrites":{
+            "enable":"true"
+        }
+    },
+    "env":{},
+    "scripts":{
+        "onServerInitialInstall":"install bx-compat"
+    }
+}
