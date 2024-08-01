@@ -8,6 +8,7 @@ WEB-INF
 .engine/**
 .cbfs/**
 build/.db/**
+grapher/**
 
 # logs + tests
 logs/**
