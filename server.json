@@ -13,6 +13,6 @@
     },
     "env":{},
     "scripts":{
-        "onServerInitialInstall":""
+        "onServerInitialInstall":"install bx-compat"
     }
 }

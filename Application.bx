@@ -70,7 +70,7 @@ class{
 	/**
 	 * Fires when the application starts
 	 */
-	public boolean function onApplicationStart() output="true"{
+	public boolean function onApplicationStart() {
 		setting requestTimeout ="300";
 		application.cbBootstrap= new coldbox.system.Bootstrap(
 			COLDBOX_CONFIG_FILE,
@@ -87,7 +87,7 @@ class{
 	 *
 	 * @appScope The app scope
 	 */
-	public void function onApplicationEnd( struct appScope ) output="true"{
+	public void function onApplicationEnd( struct appScope ) {
 		arguments.appScope.cbBootstrap.onApplicationEnd( arguments.appScope );
 	}
 
@@ -96,7 +96,7 @@ class{
 	 *
 	 * @targetPage The requested page
 	 */
-	public boolean function onRequestStart( string targetPage ) output="true"{
+	public boolean function onRequestStart( string targetPage ) {
 		// Process ColdBox Request
 		application.cbBootstrap.onRequestStart( arguments.targetPage );
 		return true;
@@ -105,7 +105,7 @@ class{
 	/**
 	 * Fires on every session start
 	 */
-	public void function onSessionStart() output="true"{
+	public void function onSessionStart() {
 		if ( !isNull( application.cbBootstrap ) ) {
 			application.cbBootStrap.onSessionStart();
 		}
@@ -117,7 +117,7 @@ class{
 	 * @sessionScope The session scope
 	 * @appScope     The app scope
 	 */
-	public void function onSessionEnd( struct sessionScope, struct appScope ) output="true"{
+	public void function onSessionEnd( struct sessionScope, struct appScope ) {
 		arguments.appScope.cbBootStrap.onSessionEnd( argumentCollection = arguments );
 	}
 
@@ -126,7 +126,7 @@ class{
 	 *
 	 * @template
 	 */
-	public boolean function onMissingTemplate( template ) output="true"{
+	public boolean function onMissingTemplate( template ) {
 		return application.cbBootstrap.onMissingTemplate( argumentCollection = arguments );
 	}
 
