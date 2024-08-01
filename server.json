@@ -1,5 +1,5 @@
 {
-    "name":"BX-ColdBox",
+    "name":"bx-default",
     "app":{
         "cfengine":"boxlang@be"
     },
@@ -13,6 +13,6 @@
     },
     "env":{},
     "scripts":{
-        "onServerInitialInstall":"install bx-compat"
+        "onServerInitialInstall":""
     }
 }
