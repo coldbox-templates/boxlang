@@ -18,12 +18,12 @@
     "contributors":[],
     "ignore":[],
     "devDependencies":{
-        "testbox":"^5.0.0",
+        "testbox":"*",
         "commandbox-cfformat":"*"
     },
     "installPaths":{
         "coldbox":"coldbox/",
-        "testbox":"testbox/",
+        "testbox":"testbox/"
     },
     "dependencies":{
         "coldbox":"be"

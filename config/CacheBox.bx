@@ -1,5 +1,7 @@
 class {
 
+	property cachebox;
+
 	/**
 	 * Configure CacheBox for ColdBox Application Operation
 	 */

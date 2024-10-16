@@ -1,5 +1,7 @@
 class extends="coldbox.system.ioc.config.Binder" {
 
+	property wirebox;
+
 	/**
 	 * Configure WireBox, that's it!
 	 */

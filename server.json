@@ -4,14 +4,18 @@
         "cfengine":"boxlang@be"
     },
     "jvm":{
-        "javaVersion":"openjdk21_jdk"
+        "heapSize":"512",
+        "javaVersion":"openjdk21_jdk",
+        "args":"-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8888"
+    },
+    "cfconfig":{
+        "file":".cfconfig.json"
     },
     "web":{
         "rewrites":{
-            "enable":"true"
+            "enable":true
         }
     },
-    "env":{},
     "scripts":{
         "onServerInitialInstall":"install bx-compat"
     }
