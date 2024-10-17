@@ -1,7 +1,5 @@
 class {
 
-	property cachebox;
-
 	/**
 	 * Configure CacheBox for ColdBox Application Operation
 	 */
@@ -11,7 +9,7 @@ class {
 		 * CacheBox Configuration (https://cachebox.ortusbooks.com)
 		 * --------------------------------------------------------------------------
 		 */
-		cacheBox = {
+		variables.cacheBox = {
 			/**
 			 * --------------------------------------------------------------------------
 			 * Default Cache Configuration
