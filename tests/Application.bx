@@ -33,7 +33,7 @@ class {
 	 *
 	 * @targetPage The requested page
 	 */
-	public boolean function onRequestStart( targetPage ){
+	public boolean function onRequestStart( targetPage ) output="true"{
 		// Set a high timeout for long running tests
 		setting requestTimeout   ="9999";
 		// New ColdBox Virtual Application Starter

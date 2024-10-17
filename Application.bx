@@ -96,7 +96,7 @@ class{
 	 *
 	 * @targetPage The requested page
 	 */
-	public boolean function onRequestStart( string targetPage ) {
+	public boolean function onRequestStart( string targetPage ) output=true{
 		// Process ColdBox Request
 		application.cbBootstrap.onRequestStart( arguments.targetPage );
 		return true;
