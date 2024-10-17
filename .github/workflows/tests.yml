@@ -14,6 +14,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        # Update to 6.1 upon release
+        commandbox_version: [ "6.1.0-rc" ]
         cfengine: [ "boxlang@be" ]
     steps:
       - name: Checkout Repository
@@ -33,6 +35,9 @@ jobs:
 
       - name: Setup CommandBox CLI
         uses: Ortus-Solutions/setup-commandbox@v2.0.1
+        with:
+          version: ${{ matrix.commandbox_version }}
+          install: testbox-cli,commandbox-boxlang
 
       - name: Setup Environment For Testing Process
         run: |
@@ -76,8 +81,8 @@ jobs:
           path: |
             tests/results/**/*
 
-      - name: Show Server Log On Failures
-        if: ${{ failure() }}
+      - name: Server logs
+        if: ${{ always() }}
         run: |
           box server log
 
