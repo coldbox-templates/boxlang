@@ -1,6 +1,5 @@
 /**
- * This is a protection Application.bx for the config file. You do not
- * need to modify this file
+ * Protects the application from being accessed directly.
  */
 class {
 	abort;

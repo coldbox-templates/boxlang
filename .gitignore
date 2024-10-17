@@ -4,6 +4,7 @@ settings.xml
 WEB-INF
 
 # Engines + Database + CBFS + Secrets
+.tmp/**
 .env
 .engine/**
 .cbfs/**
@@ -23,3 +24,4 @@ yarn-error.log
 /coldbox/**
 /testbox/**
 /modules/**
+/lib/java/**

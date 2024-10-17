@@ -34,13 +34,19 @@ Install the template dependencies by running the `install` command:
 box install
 ```
 
-This will setup all the needed dependencies for each application template.  You can then start the embedded server:
+This will setup all the needed dependencies for each application template.  You can then start the BoxLang server:
 
 ```bash
 box server start
 ```
 
 Code to your liking and enjoy!
+
+## Java Dependencies
+
+If your project relies on Java third-party dependencies, you can use the included Maven `pom.xml` file in the root.  You can add your dependencies there and then run the `mvn install` command to download them into the `lib/java` folder.  The BoxLang application will automatically class load all the jars in that folder for you!  You can also use the `mvn clean` command to remove all the jars.
+
+You can find Java dependencies here: <https://central.sonatype.com/>.  Just grab the Maven coordinates and add them to your `pom.xml` file.
 
 ## Dockerfile
 
@@ -80,7 +86,7 @@ To run the custom tasks open the command palette and choose `Tasks: Run Build Ta
 
 ## Welcome to ColdBox
 
-ColdBox *Hierarchical* MVC is the de-facto enterprise-level [HMVC](https://en.wikipedia.org/wiki/Hierarchical_model%E2%80%93view%E2%80%93controller) framework for ColdFusion (CFML) and BoxLang developers. It's professionally backed, conventions-based, modular, highly extensible, and productive. Getting started with ColdBox is quick and painless.  ColdBox takes the pain out of development by giving you a standardized methodology for development with features such as:
+ColdBox *Hierarchical* MVC is the de-facto enterprise-level [HMVC](https://en.wikipedia.org/wiki/Hierarchical_model%E2%80%93view%E2%80%93controller) framework for BoxLang and CFML developers. It's professionally backed, conventions-based, modular, highly extensible, and productive. Getting started with ColdBox is quick and painless.  ColdBox takes the pain out of development by giving you a standardized methodology for development with features such as:
 
 * [Conventions instead of configuration](https://coldbox.ortusbooks.com/getting-started/conventions)
 * [Modern URL routing](https://coldbox.ortusbooks.com/the-basics/routing)
@@ -97,7 +103,7 @@ ColdBox *Hierarchical* MVC is the de-facto enterprise-level [HMVC](https://en.wi
 
 ## Learning ColdBox
 
-ColdBox is the defacto standard for building modern ColdFusion (CFML) and BoxLang applications.  It has the most extensive [documentation](https://coldbox.ortusbooks.com) of all modern web application frameworks.
+ColdBox is the defacto standard for building modern BoxLang and ColdFusion (CFML) applications.  It has the most extensive [documentation](https://coldbox.ortusbooks.com) of all modern web application frameworks.
 
 If you don't like reading so much, then you can try our video learning platform: [CFCasts (www.cfcasts.com)](https://www.cfcasts.com)
 
