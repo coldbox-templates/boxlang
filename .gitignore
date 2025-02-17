@@ -21,6 +21,7 @@ npm-debug.log
 yarn-error.log
 
 ## Ignored Dependencies
+effective-pom.xml
 /coldbox/**
 /testbox/**
 /modules/**
