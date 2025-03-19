@@ -6,17 +6,14 @@ on:
 jobs:
   tests:
     name: Tests
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
       DB_USER: root
       DB_PASSWORD: root
       WEB_PORT: 60299
+      JDK_VERSION: "21"
     strategy:
       fail-fast: false
-      matrix:
-        # Update to 6.1 upon release
-        commandbox_version: [ "6.1.0-rc" ]
-        cfengine: [ "boxlang@be" ]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -24,14 +21,14 @@ jobs:
       # Not Needed in this module
       - name: Setup Database and Fixtures
         run: |
-          sudo /etc/init.d/mysql start
+          sudo systemctl start mysql.service
           mysql -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} -e 'CREATE DATABASE coldbox;'
 
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: "temurin"
-          java-version: "21"
+          java-version: ${{ env.JDK_VERSION }}
 
       - name: Setup CommandBox CLI
         uses: Ortus-Solutions/setup-commandbox@v2.0.1
@@ -57,7 +54,6 @@ jobs:
       - name: Start ${{ matrix.cfengine }} Server
         run: |
           box server set web.http.port=${{ env.WEB_PORT }}
-          box server set app.cfengine=${{ matrix.cfengine }}
           box server start --debug
           curl http://127.0.0.1:${{ env.WEB_PORT }}
 
@@ -81,7 +77,7 @@ jobs:
           path: |
             tests/results/**/*
 
-      - name: Server logs
+      - name: Show Server Log On Failures
         if: ${{ always() }}
         run: |
           box server log
@@ -93,4 +89,3 @@ jobs:
           name: Failure Debugging Info - ${{ matrix.cfengine }}
           path: |
             .engine/**/logs/*
-            .engine/**/WEB-INF/cfusion/logs/*

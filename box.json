@@ -17,16 +17,17 @@
     "shortDescription":"",
     "contributors":[],
     "ignore":[],
+	"dependencies":{
+        "coldbox":"be"
+    },
     "devDependencies":{
         "testbox":"*",
-        "commandbox-cfformat":"*"
+        "commandbox-boxlang":"*",
+		"commandbox-cfformat":"*"
     },
     "installPaths":{
         "coldbox":"coldbox/",
         "testbox":"testbox/"
-    },
-    "dependencies":{
-        "coldbox":"be"
     },
     "scripts":{
         "postInstall":"pathExists .env || cp .env.example .env && package set ignore=[]",
