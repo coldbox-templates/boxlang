@@ -71,7 +71,7 @@ class{
 	 * Fires when the application starts
 	 */
 	public boolean function onApplicationStart() {
-		setting requestTimeout ="300";
+		bx:setting requestTimeout ="300";
 		application.cbBootstrap= new coldbox.system.Bootstrap(
 			COLDBOX_CONFIG_FILE,
 			COLDBOX_APP_ROOT_PATH,

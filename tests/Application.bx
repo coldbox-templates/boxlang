@@ -35,7 +35,7 @@ class {
 	 */
 	public boolean function onRequestStart( targetPage ) output="true"{
 		// Set a high timeout for long running tests
-		setting requestTimeout   ="9999";
+		bx:setting requestTimeout   ="9999";
 		// New ColdBox Virtual Application Starter
 		request.coldBoxVirtualApp= new coldbox.system.testing.VirtualApp( appMapping = "/root" );
 
