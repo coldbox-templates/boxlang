@@ -16,14 +16,17 @@
     "bugs":"",
     "shortDescription":"",
     "contributors":[],
-    "ignore":[],
-	"dependencies":{
+    "ignore":[
+        "changelog.md",
+        ".github/**"
+    ],
+    "dependencies":{
         "coldbox":"be"
     },
     "devDependencies":{
         "testbox":"*",
         "commandbox-boxlang":"*",
-		"commandbox-cfformat":"*"
+        "commandbox-cfformat":"*"
     },
     "installPaths":{
         "coldbox":"coldbox/",
