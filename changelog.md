@@ -9,4 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2025-04-29
+
 - First creation of the changelog file.
+
+[unreleased]: https://github.com/coldbox-templates/bx-default/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/coldbox-templates/bx-default/compare/5a12ed5b070279b27504b34f379fea63ff4a0367...v1.0.0
