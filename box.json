@@ -21,7 +21,7 @@
         ".github/**"
     ],
     "dependencies":{
-        "coldbox":"^7.0.0"
+        "coldbox":"^7.4.0"
     },
     "devDependencies":{
         "testbox":"*",
