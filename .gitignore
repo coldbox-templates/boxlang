@@ -8,7 +8,7 @@ WEB-INF
 .env
 .engine/**
 .cbfs/**
-build/.db/**
+docker/.db/**
 grapher/**
 
 # logs + tests

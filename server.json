@@ -1,7 +1,7 @@
 {
     "name":"bx-default",
     "app":{
-        "cfengine":"boxlang@be"
+        "cfengine":"boxlang@1"
     },
     "jvm":{
         "heapSize":"512",
