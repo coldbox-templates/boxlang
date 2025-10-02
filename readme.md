@@ -110,6 +110,40 @@ Your application will be available at `http://localhost:8080` 🌐
 
 Code to your liking and enjoy! 🎊
 
+## 🗺️ BoxLang Mappings
+
+This template comes pre-configured with essential BoxLang mappings in the `runtime/config/boxlang.json` file to make development seamless. These mappings provide convenient shortcuts to access different parts of your application:
+
+### 📍 Core Application Mappings
+
+```json
+"/": "${user-dir}/public",           // Web root directory
+"/root": "${user-dir}/app",          // Alias app root mapping for testing purposes
+"/app": "${user-dir}/app",           // ColdBox application directory
+"/runtime": "${user-dir}/runtime"    // BoxLang runtime environment
+```
+
+### 🏗️ Framework & Library Mappings
+
+```json
+"/coldbox": "${user-dir}/runtime/lib/coldbox",              // ColdBox framework
+"/coldbox/system/exceptions": "...coldbox/system/exceptions", // ColdBox exceptions (external)
+"/testbox": "${user-dir}/runtime/lib/testbox"               // TestBox testing framework
+```
+
+### 📦 Module Mappings
+
+```json
+"/modules": "${user-dir}/modules"    // Application modules directory
+```
+
+### 🔧 External vs Internal Mappings
+
+- **External mappings** (`"external": true`) - Can be accessed via web requests and file resolution
+- **Internal mappings** (`"external": false`) - Only accessible programmatically, not via web requests
+
+This mapping structure ensures your ColdBox application has clean, predictable paths for all its components while maintaining security by controlling web accessibility! 🛡️
+
 ## ☕ Java Dependencies
 
 If your project relies on Java third-party dependencies, you can use the included Maven `pom.xml` file in the root. You can add your dependencies there and then run the `mvn install` command to download them into the `runtime/lib` folder. The BoxLang application will automatically class load all the jars in that folder for you! 🎯
