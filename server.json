@@ -3,7 +3,6 @@
     "app":{
         "cfengine":"boxlang@be",
         "serverHomeDirectory":"./.engine",
-        "logDir":"./runtime/logs",
         "engineConfigFile":"./runtime/config/boxlang.json"
     },
     "jvm":{
@@ -17,7 +16,6 @@
             "enable":true
         },
         "aliases":{
-            "/testbox":"./runtime/lib/testbox/",
             "/tests":"./tests/"
         }
     },

@@ -33,7 +33,7 @@
 	}
 	// TestBox Assets
 	ASSETS_DIR = expandPath( "/testbox/system/reports/assets" );
-	TESTBOX_VERSION = new testBox.system.TestBox().getVersion();
+	TESTBOX_VERSION = new testbox.system.TestBox().getVersion();
 </bx:script>
 <!DOCTYPE html>
 <html>

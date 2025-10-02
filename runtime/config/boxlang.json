@@ -60,7 +60,7 @@
 	// A non-external mapping will not be used in the web runtimes to resolve incoming file paths
 	"mappings": {
 		"/": "${user-dir}/public",
-		"/root" : "${user-dir}/public",
+		"/root" : "${user-dir}/app",
 		"/app": {
 			"path": "${user-dir}/app",
 			"external": false
@@ -71,6 +71,10 @@
 		},
 		"/coldbox/system/exceptions": {
 			"path": "${user-dir}/runtime/lib/coldbox/system/exceptions",
+			"external": true
+		},
+		"/testbox" : {
+			"path": "${user-dir}/runtime/lib/testbox",
 			"external": true
 		},
 		"/runtime" : {
@@ -106,7 +110,7 @@
 	// Logging Settings for the runtime
 	"logging": {
 		// The location of the log files the runtime will produce
-		"logsDirectory": "${boxlang-home}/logs",
+		"logsDirectory": "${user-dir}/runtime/logs",
 		// The maximum number of days to keep log files before rotation
 		// Default is 90 days or 3 months
 		// Set to 0 to never rotate

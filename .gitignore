@@ -11,7 +11,8 @@ WEB-INF
 docker/.db/**
 
 # logs + tests
-logs/**
+app/logs/**
+runtime/logs/**
 tests/results/**
 
 # npm
