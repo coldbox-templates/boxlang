@@ -1,22 +1,27 @@
 {
-    "name":"bx-default",
+    "name":"boxlang-coldbox-start-template",
     "app":{
-        "cfengine":"boxlang@1"
+        "cfengine":"boxlang@be",
+        "serverHomeDirectory":"./.engine",
+        "logDir":"./runtime/logs",
+        "engineConfigFile":"./runtime/config/boxlang.json"
     },
     "jvm":{
         "heapSize":"512",
         "javaVersion":"openjdk21_jre",
         "args":"-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8888"
     },
-    "cfconfig":{
-        "file":".cfconfig.json"
-    },
     "web":{
+        "webroot":"public",
         "rewrites":{
             "enable":true
+        },
+        "aliases":{
+            "/testbox":"./runtime/lib/testbox/",
+            "/tests":"./tests/"
         }
     },
     "scripts":{
-        "onServerInitialInstall":"install bx-compat-cfml,bx-esapi"
+        "onServerInitialInstall":"install bx-esapi"
     }
 }

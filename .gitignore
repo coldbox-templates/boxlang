@@ -9,7 +9,6 @@ WEB-INF
 .engine/**
 .cbfs/**
 docker/.db/**
-grapher/**
 
 # logs + tests
 logs/**
@@ -22,7 +21,5 @@ yarn-error.log
 
 ## Ignored Dependencies
 effective-pom.xml
-/coldbox/**
-/testbox/**
-/modules/**
-/lib/java/**
+runtime/lib/**
+runtime/java/**

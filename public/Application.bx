@@ -11,26 +11,40 @@ class{
 	 * Application Properties: Modify as you see fit!
 	 * --------------------------------------------------------------------------
 	 */
-	this.name                 = "My ColdBox Application";
+	this.name                 = "ColdBox Application";
 	this.sessionManagement    = true;
 	this.sessionTimeout       = createTimespan( 0, 1, 0, 0 );
 	this.setClientCookies     = true;
 	this.setDomainCookies     = true;
-	this.scriptProtect        = false;
-	this.secureJSON           = false;
 	this.timezone             = "UTC";
 	this.whiteSpaceManagement = "smart";
 
 	/**
 	 * --------------------------------------------------------------------------
-	 * Java Integration
+	 * Location Mappings
 	 * --------------------------------------------------------------------------
-	 * Modify only if you need to
 	 */
-	this.javaSettings = {
-		loadPaths               : [ expandPath( "./lib/java" ) ],
-		reloadOnChange          : false
-	};
+	// Root path of the public web
+	//this.mappings[ "/root" ] = getDirectoryFromPath( getCurrentTemplatePath() );
+	 // Outside the Root Path, one back
+	//rootPath = REReplaceNoCase( this.mappings[ "/root" ], "public(\\|/)", "" );
+	// Public Includes
+	//this.mappings[ "/includes" ] = this.mappings[ "/root" ] & "includes";
+	// Your ColdBox Application core
+	//this.mappings[ "/app" ] = rootPath & "app";
+	// Runtime Libraries
+	//this.mappings[ "/runtime" ] = rootPath & "runtime";
+	// Modules
+	//this.mappings[ "/modules" ] = this.mappings[ "/runtime" ] & "/modules";
+
+	/**
+	 * --------------------------------------------------------------------------
+	 * Java Application Class Loader Settings
+	 * --------------------------------------------------------------------------
+	 */
+	// this.javaSettings = {
+	// 	loadPaths : [ expandPath( "/runtime/lib" ) ]
+	// };
 
 	/**
 	 * --------------------------------------------------------------------------
@@ -40,32 +54,24 @@ class{
 	 * https://coldbox.ortusbooks.com/getting-started/configuration/bootstrapper-application.cfc
 	 */
 	// COLDBOX STATIC PROPERTY, DO NOT CHANGE UNLESS THIS IS NOT THE ROOT OF YOUR COLDBOX APP
-	COLDBOX_APP_ROOT_PATH = getDirectoryFromPath( getCurrentTemplatePath() );
-	// The web server mapping to this application. Used for remote purposes or static purposes
-	COLDBOX_APP_MAPPING   = "";
+	COLDBOX_APP_ROOT_PATH = expandPath( "/app" )
+	// THE MAPPING LOCATION OF THE COLDBOX CORE APP
+	COLDBOX_APP_MAPPING   = "/app"
+	// THE WEB PATH LOCATION OF THE PUBLIC ASSETS, EMPTY FOR THE ROOT.
+	COLDBOX_WEB_MAPPING   = ""
 	// COLDBOX PROPERTIES
-	COLDBOX_CONFIG_FILE   = "";
+	COLDBOX_CONFIG_FILE   = ""
 	// COLDBOX APPLICATION KEY OVERRIDE
-	COLDBOX_APP_KEY       = "";
-	// By default if a reinit is issued, other requests fail and wait.
-	COLDBOX_FAIL_FAST     = true;
-
-	/**
-	 * --------------------------------------------------------------------------
-	 * Location Mappings
-	 * --------------------------------------------------------------------------
-	 * - cbApp : Quick reference to root application
-	 * - coldbox : Where ColdBox library is installed
-	 */
-	this.mappings[ "/cbapp" ]   = COLDBOX_APP_ROOT_PATH;
-	this.mappings[ "/coldbox" ] = COLDBOX_APP_ROOT_PATH & "coldbox";
+	COLDBOX_APP_KEY       = ""
+	// By default if an app is reiniting and a request hits it, we will fail fast with a message
+	COLDBOX_FAIL_FAST = true
 
 	/**
 	 * --------------------------------------------------------------------------
 	 * ORM + Datasource Settings
 	 * --------------------------------------------------------------------------
 	 */
-	this.datasource = "coldbox";
+	this.datasource = "coldbox"
 
 	/**
 	 * Fires when the application starts
@@ -76,10 +82,12 @@ class{
 			COLDBOX_CONFIG_FILE,
 			COLDBOX_APP_ROOT_PATH,
 			COLDBOX_APP_KEY,
-			COLDBOX_APP_MAPPING
-		);
-		application.cbBootstrap.loadColdbox();
-		return true;
+			COLDBOX_APP_MAPPING,
+			COLDBOX_FAIL_FAST,
+			COLDBOX_WEB_MAPPING
+		)
+		application.cbBootstrap.loadColdbox()
+		return true
 	}
 
 	/**
@@ -88,18 +96,16 @@ class{
 	 * @appScope The app scope
 	 */
 	public void function onApplicationEnd( struct appScope ) {
-		arguments.appScope.cbBootstrap.onApplicationEnd( arguments.appScope );
+		arguments.appScope.cbBootstrap.onApplicationEnd( arguments.appScope )
 	}
 
 	/**
-	 * Fires on every request
+	 * Process a ColdBox Request
 	 *
 	 * @targetPage The requested page
 	 */
 	public boolean function onRequestStart( string targetPage ) output=true{
-		// Process ColdBox Request
-		application.cbBootstrap.onRequestStart( arguments.targetPage );
-		return true;
+		return application.cbBootstrap.onRequestStart( arguments.targetPage )
 	}
 
 	/**
@@ -107,7 +113,7 @@ class{
 	 */
 	public void function onSessionStart() {
 		if ( !isNull( application.cbBootstrap ) ) {
-			application.cbBootStrap.onSessionStart();
+			application.cbBootStrap.onSessionStart()
 		}
 	}
 
@@ -118,7 +124,7 @@ class{
 	 * @appScope     The app scope
 	 */
 	public void function onSessionEnd( struct sessionScope, struct appScope ) {
-		arguments.appScope.cbBootStrap.onSessionEnd( argumentCollection = arguments );
+		arguments.appScope.cbBootStrap.onSessionEnd( argumentCollection = arguments )
 	}
 
 	/**
@@ -127,7 +133,7 @@ class{
 	 * @template
 	 */
 	public boolean function onMissingTemplate( template ) {
-		return application.cbBootstrap.onMissingTemplate( argumentCollection = arguments );
+		return application.cbBootstrap.onMissingTemplate( argumentCollection = arguments )
 	}
 
 }
