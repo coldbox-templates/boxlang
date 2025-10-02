@@ -10,10 +10,6 @@
 
 	<!---Base URL --->
 	<base href="#event.getHTMLBaseURL()#" />
-    <bx:dump var="[#event.getHTMLBaseURL()#]"/>
-	<bx:dump var="#controller.getSetting( "webMapping" )#"/>
-	<bx:abort>
-
 	<!---
 		CSS
 		- Bootstrap
