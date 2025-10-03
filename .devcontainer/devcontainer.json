@@ -1,0 +1,42 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+	"name": "ColdBox App",
+	"dockerComposeFile": [
+		"./docker-compose.yml"
+	],
+	"service": "coldbox_app",
+	"mounts": [
+		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+		"source=${localWorkspaceFolder},target=/app,type=bind,consistency=cached"
+	],
+	
+	"workspaceFolder": "/app",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {
+			"nodeGypDependencies": true,
+			"version": "lts"
+		},
+		"ghcr.io/devcontainers/features/git:1": {}
+	},
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postStartCommand": {
+		"coldbox_app": "cd /app && box server start"
+	},
+
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"remote.SSH.agentForward": true,
+				"remote.SSH.useLocalServer": true
+			},
+			"extensions": [
+				"ortus-solutions.vscode-boxlang"
+			]
+		}
+	}
+}
