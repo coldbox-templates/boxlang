@@ -24,9 +24,6 @@ class {
 	this.mappings[ "/tests" ]   = getDirectoryFromPath( getCurrentTemplatePath() );
 	// The root application mapping
 	rootPath                    = reReplaceNoCase( this.mappings[ "/tests" ], "tests(\\|/)", "" );
-	this.mappings[ "/root" ]    = this.mappings[ "/cbapp" ] = rootPath;
-	this.mappings[ "/coldbox" ] = rootPath & "coldbox";
-	this.mappings[ "/testbox" ] = rootPath & "testbox";
 
 	/**
 	 * Fires on every test request. It builds a Virtual ColdBox application for you
@@ -34,6 +31,9 @@ class {
 	 * @targetPage The requested page
 	 */
 	public boolean function onRequestStart( targetPage ) output="true"{
+		pagePoolClear();
+		writeDump( var=expandPath( "/testbox/system" ), top = 5, showUDFs = false );
+		abort;
 		// Set a high timeout for long running tests
 		bx:setting requestTimeout   ="9999";
 		// New ColdBox Virtual Application Starter

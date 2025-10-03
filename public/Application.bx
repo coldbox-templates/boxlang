@@ -23,28 +23,13 @@ class{
 	 * --------------------------------------------------------------------------
 	 * Location Mappings
 	 * --------------------------------------------------------------------------
+	 * The following mappings are registered globally in your /runtime/config/boxlang.json
+	 * - /, /root -> points to your web root
+	 * - /app -> points to your application folder (Not web accessible)
+	 * - /modules -> points to your modules folder (Web accessible)
+	 * - /coldbox -> points to your ColdBox installation (Not web accessible)
+	 * - /runtime -> points to your application's runtime folder (Not web accessible)
 	 */
-	// Root path of the public web
-	//this.mappings[ "/root" ] = getDirectoryFromPath( getCurrentTemplatePath() );
-	 // Outside the Root Path, one back
-	//rootPath = REReplaceNoCase( this.mappings[ "/root" ], "public(\\|/)", "" );
-	// Public Includes
-	//this.mappings[ "/includes" ] = this.mappings[ "/root" ] & "includes";
-	// Your ColdBox Application core
-	//this.mappings[ "/app" ] = rootPath & "app";
-	// Runtime Libraries
-	//this.mappings[ "/runtime" ] = rootPath & "runtime";
-	// Modules
-	//this.mappings[ "/modules" ] = this.mappings[ "/runtime" ] & "/modules";
-
-	/**
-	 * --------------------------------------------------------------------------
-	 * Java Application Class Loader Settings
-	 * --------------------------------------------------------------------------
-	 */
-	// this.javaSettings = {
-	// 	loadPaths : [ expandPath( "/runtime/lib" ) ]
-	// };
 
 	/**
 	 * --------------------------------------------------------------------------
@@ -57,8 +42,10 @@ class{
 	COLDBOX_APP_ROOT_PATH = expandPath( "/app" )
 	// THE MAPPING LOCATION OF THE COLDBOX CORE APP
 	COLDBOX_APP_MAPPING   = "/app"
-	// THE WEB PATH LOCATION OF THE PUBLIC ASSETS, EMPTY FOR THE ROOT.
-	COLDBOX_WEB_MAPPING   = ""
+	// THE WEB PATH LOCATION OF THE PUBLIC ASSETS, USUALLY "/" FOR MOST APPS
+	// USE Empty String "" IF YOUR APP IS IN THE ROOT OF THE WEB
+	// OR "/yourApp" IF YOUR APP IS IN A SUBFOLDER
+	COLDBOX_WEB_MAPPING   = "/"
 	// COLDBOX PROPERTIES
 	COLDBOX_CONFIG_FILE   = ""
 	// COLDBOX APPLICATION KEY OVERRIDE

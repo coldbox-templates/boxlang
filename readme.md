@@ -32,9 +32,10 @@ This ColdBox 8 application follows a clean, modern architecture with the followi
 
 ### 🏗️ Core Application (`/app/`)
 
+This folder contains the main application code, including configuration files, event handlers, models, views, and more.
+
 ```text
 app/
-├── 📱 Application.bx          # Main application bootstrap
 ├── 🔧 config/                # Configuration files
 │   ├── CacheBox.bx           # Caching configuration
 │   ├── ColdBox.bx            # Main framework settings
@@ -44,13 +45,15 @@ app/
 ├── 🎮 handlers/              # Event handlers (controllers)
 ├── 🛠️ helpers/               # Application helpers
 ├── 🎨 layouts/               # View layouts
-├── 📝 logs/                  # Application logs
+├── 📝 logs/                  # ColdBox logs
 ├── 🏗️ models/                # Business logic models
 ├── 📦 modules_app/           # Application-specific modules
 └── 👁️ views/                 # View templates
 ```
 
 ### 🌐 Public Web Root (`/public/`)
+
+This folder contains all the publicly accessible assets and the main application entry point.
 
 ```text
 public/
@@ -63,20 +66,23 @@ public/
 
 ### 🔧 Configuration & Build
 
+This folder contains configuration files, dependencies, Docker setup, and runtime environment.
+
 ```text
-├── 📋 box.json               # CommandBox dependencies
-├── 🏗️ pom.xml                # Maven dependencies
+├── 📋 box.json               # CommandBox dependencies and project descriptor
+├── 🏗️ pom.xml                # Maven dependencies (Optional)
 ├── 🖥️ server.json            # Server configuration
-├── 📊 effective-pom.xml      # Resolved Maven dependencies
 ├── 🐳 docker/                # Docker configuration
 ├── 🧪 tests/                 # Test suites
-├── 📦 modules/               # Application modules (your custom modules)
+├── 📦 modules/               # ColdBox application modules (Managed by CommandBox)
 ├── ⚙️ runtime/               # BoxLang runtime environment
 │   ├── config/               # Custom BoxLang configuration
+│   ├── global/               # Global classes and BoxLang components
+│   │   ├── classes/          # Global BoxLang classes
+│   │   └── components/       # Global BoxLang components
 │   ├── lib/                  # Java class loader libraries
 │   ├── logs/                 # Server logs
 │   ├── modules/              # BoxLang runtime modules
-│   └── dependencies/         # ColdBox, TestBox, major app dependencies
 └── 📚 resources/             # ColdBox/CommandBox module resources
     ├── migrations/           # Database migrations (cbmigrations)
     ├── seeders/              # Database seeders
@@ -86,13 +92,15 @@ public/
 
 ## ⚡ Quick Installation
 
-Install the template dependencies by running the `install` command:
+In order to work with this template, you need to have [CommandBox](https://www.ortussolutions.com/products/commandbox) installed on your machine. CommandBox is a powerful CLI tool and package manager for BoxLang and CFML developers.
+You will most likely issue a few commands to get the application up and running.
 
 ```bash
-box install
+mkdir MyApp --cd
+coldbox create app --boxlang
 ```
 
-This will setup all the needed dependencies for each application template. You can then start the BoxLang server:
+This will create a new ColdBox application using the BoxLang template and install all the needed dependencies.  You can then startup your BoxLang server using the following command:
 
 ```bash
 box server start
@@ -101,6 +109,40 @@ box server start
 Your application will be available at `http://localhost:8080` 🌐
 
 Code to your liking and enjoy! 🎊
+
+## 🗺️ BoxLang Mappings
+
+This template comes pre-configured with essential BoxLang mappings in the `runtime/config/boxlang.json` file to make development seamless. These mappings provide convenient shortcuts to access different parts of your application:
+
+### 📍 Core Application Mappings
+
+```json
+"/": "${user-dir}/public",           // Web root directory
+"/root": "${user-dir}/app",          // Alias app root mapping for testing purposes
+"/app": "${user-dir}/app",           // ColdBox application directory
+"/runtime": "${user-dir}/runtime"    // BoxLang runtime environment
+```
+
+### 🏗️ Framework & Library Mappings
+
+```json
+"/coldbox": "${user-dir}/runtime/lib/coldbox",              // ColdBox framework
+"/coldbox/system/exceptions": "...coldbox/system/exceptions", // ColdBox exceptions (external)
+"/testbox": "${user-dir}/runtime/lib/testbox"               // TestBox testing framework
+```
+
+### 📦 Module Mappings
+
+```json
+"/modules": "${user-dir}/modules"    // Application modules directory
+```
+
+### 🔧 External vs Internal Mappings
+
+- **External mappings** (`"external": true`) - Can be accessed via web requests and file resolution
+- **Internal mappings** (`"external": false`) - Only accessible programmatically, not via web requests
+
+This mapping structure ensures your ColdBox application has clean, predictable paths for all its components while maintaining security by controlling web accessibility! 🛡️
 
 ## ☕ Java Dependencies
 
