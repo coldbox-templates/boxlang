@@ -78,6 +78,7 @@ The setup script walks you through several configuration options:
 - **🔐 Environment Setup**: Generate `.env` files and configure environment variables
 - **📦 Dependencies**: Install additional dependencies based on your selections
 - **✅ Validation**: Verify your environment is properly configured
+- **🤖 Creates AI Instructions**: Generates AI usage instructions based on your project setup
 
 > **💡 Tip**: Run `Setup.bx` immediately after creating your application to ensure everything is configured correctly for your development environment.
 
