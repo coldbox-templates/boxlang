@@ -82,7 +82,6 @@ This folder contains configuration files, dependencies, Docker setup, and runtim
 │   │   └── components/       # Global BoxLang components
 │   ├── lib/                  # Runtime libraries (Managed by Maven/CommandBox)
 │   ├── logs/                 # BoxLang logs
-│   ├── modules/              # BoxLang runtime modules
 └── 📚 resources/             # ColdBox/CommandBox module resources
     ├── migrations/           # Database migrations (cbmigrations)
     ├── seeders/              # Database seeders
