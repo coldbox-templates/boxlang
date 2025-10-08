@@ -61,7 +61,107 @@ Your application will be available at `http://localhost:8080` 🌐
 
 Code to your liking and enjoy! 🎊
 
-## 📁 Application Structure
+## 🤖 Setup Script (`Setup.bx`)
+
+After creating your application, run the **Setup.bx** script to configure your template and set your preferences. This interactive script helps you customize your application for your specific needs.
+
+```bash
+boxlang Setup.bx
+```
+
+### What Setup.bx Does:
+
+The setup script walks you through several configuration options:
+
+- **📝 Project Information**: Set your application name, author, and description
+- **🎨 Customization**: Configure project-specific settings
+- **🔐 Environment Setup**: Generate `.env` files and configure environment variables
+- **📦 Dependencies**: Install additional dependencies based on your selections
+- **✅ Validation**: Verify your environment is properly configured
+
+> **💡 Tip**: Run `Setup.bx` immediately after creating your application to ensure everything is configured correctly for your development environment.
+
+## 📦 Build Script (`Build.bx`)
+
+The **Build.bx** script compiles and packages your application for distribution. It creates optimized, production-ready builds that can be deployed to any environment.
+
+```bash
+boxlang Build.bx
+```
+
+### What Build.bx Does:
+
+The build process performs the following steps:
+
+1. **🧹 Clean Build Directory**: Removes any existing `build/` folder and creates a fresh structure
+2. **📁 Copy Sources**: Copies application files (`app/`, `modules/`, `public/`, `runtime/`) to the build package
+3. **⊘ Smart Exclusions**: Automatically excludes:
+   - Log files and directories (`logs/`, `*.log`)
+   - System files (`.DS_Store`, `Thumbs.db`)
+   - Hidden files and folders (`.git`, `.gitignore`, etc.)
+4. **🏷️ Build ID**: Creates a build information file with project name, version, and timestamp
+5. **🔨 Compilation**: Compiles BoxLang sources in `app/` and `public/` to optimized bytecode
+6. **📦 Distribution Package**: Creates a ZIP file: `build/distributions/{projectName}-{projectVersion}.zip`
+7. **🔐 Checksums**: Generates security checksums (MD5, SHA-256, SHA-512) for integrity verification
+
+### Build Output Structure:
+
+```text
+build/
+├── package/                          # Staged files ready for distribution
+│   ├── app/                         # Compiled application code
+│   ├── modules/                     # Application modules
+│   ├── public/                      # Compiled public assets
+│   ├── runtime/                     # Runtime configuration (without logs)
+│   └── {projectName}-{version}.md   # Build information
+└── distributions/                    # Final distribution files
+    ├── {projectName}-{version}.zip
+    ├── {projectName}-{version}.zip.md5
+    ├── {projectName}-{version}.zip.sha256
+    └── {projectName}-{version}.zip.sha512
+```
+
+### Customizing the Build:
+
+You can customize what gets included or excluded by editing the `Build.bx` file:
+
+```boxlang
+// Add directories/files to package
+variables.sources = [
+    "app",
+    "modules",
+    "public",
+    "runtime",
+    "config"  // Add your own
+];
+
+// Add exclusion patterns (regex)
+variables.excludes = [
+    "logs/",           // Exclude all log directories
+    "\.log$",          // Exclude .log files
+    "\.tmp$",          // Exclude .tmp files
+    "test-results/"    // Exclude test output
+];
+```
+
+### Deploying Your Build:
+
+Once the build completes, you can:
+
+1. **Upload the ZIP**: Deploy `{projectName}-{version}.zip` to your server
+2. **Verify Integrity**: Use the checksum files to verify the package wasn't corrupted during transfer
+3. **Extract & Run**: Unzip on your server and start with CommandBox
+
+```bash
+# On your server
+unzip cbtemplate-boxlang-1.1.0.zip
+cd cbtemplate-boxlang-1.1.0
+box server start
+```
+
+> **🚀 Pro Tip**: Integrate `Build.bx` into your CI/CD pipeline to automatically build and deploy your application on every release!
+
+## �📁 Application Structure
 
 This ColdBox 8 application follows a clean, modern architecture with the following structure:
 

@@ -231,6 +231,8 @@ class {
 			overwrite = true
 			recurse   = true;
 
+		fileCopy( variables.packageDir & "/box.json", variables.distDir & "/box.json" );
+
 		printSuccess( "Distribution created: #zipFileName#" );
 	}
 
