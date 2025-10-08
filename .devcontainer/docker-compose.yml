@@ -47,34 +47,40 @@ services:
       - .db/mysql8/data:/var/lib/mysql
       # You can uncomment and it will seed the db with our prepared sql data
       #- ../resources/sql/mysql:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
 
   # ColdBox Site
   coldbox_app:
     depends_on:
-      - coldbox_db
+      coldbox_db:
+        condition: service_healthy
     image: ortussolutions/commandbox:boxlang-ubi9
+    # Development mode: keeps container running for VS Code dev containers
+    # For production, replace with proper startup command
     command: sleep infinity
     # Environment Variables
     environment:
       CFCONFIG_ADMINPASSWORD: coldbox
-      BOX_SERVER_APP_CFENGINE: boxlang@1.5.0-snapshot
+      BOX_SERVER_APP_CFENGINE: boxlang@1
       # normally we don't specify ports like this for a commandbox image
       # doing so allows us to run commandbox separately from the container lifecycle
       # and use commandbox via the cli to manange the server - useful for development only
       BOX_SERVER_WEB_HOST: 0.0.0.0
       BOX_SERVER_WEB_HTTP_PORT: 8080
       BOX_SERVER_WEB_SSL_PORT: 8443
-      BOXLANG_DEBUGMODE: true
       BOXLANG_DEBUG: true
       ENVIRONMENT: DEVELOPMENT
       # JWT_SECRET: mySecret
       DB_HOST: coldbox_db
-      DB_PORT: 4306
+      DB_PORT: 3306
       DB_DATABASE: coldbox
       DB_DRIVER: MySQL
       DB_USER: root
       DB_PASSWORD: coldbox
-      DB_CONNECTIONSTRING: jdbc:mysql://127.0.0.1:3306/coldbox?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useLegacyDatetimeCode=true
+      DB_CONNECTIONSTRING: jdbc:mysql://coldbox_db:3306/coldbox?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useLegacyDatetimeCode=true
     # Ports
     ports:
       - "8080:8080"
