@@ -15,7 +15,7 @@
 
 <!--- Code Coverage requires FusionReactor --->
 <bx:param name="url.coverageEnabled"					default="false">
-<bx:param name="url.coveragePathToCapture"			default="#expandPath( '/root' )#">
+<bx:param name="url.coveragePathToCapture"			default="#expandPath( '/app' )#">
 <bx:param name="url.coverageWhitelist"				default="">
 <bx:param name="url.coverageBlacklist"				default="/testbox,/coldbox,/tests,/modules,Application.bx,/index.bxm">
 <bx:param name="url.coverageBrowserOutputDir"		default="#expandPath( '/tests/results/coverageReport' )#">
