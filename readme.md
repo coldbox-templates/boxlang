@@ -26,6 +26,41 @@
 
 Welcome to the modern ColdBox 8 BoxLang application template! 🎉 This template provides a solid foundation for building enterprise-grade HMVC (Hierarchical Model-View-Controller) web applications using the BoxLang runtime. Perfect for developers looking to leverage the power of ColdBox with the performance and modern features of BoxLang.
 
+## ⚙️ Requirements
+
+Before getting started, ensure you have the following installed on your operating system:
+
+1. **BoxLang OS** - Operating System Binary
+   - 📥 Installation: <https://boxlang.ortusbooks.com/getting-started/installation>
+   - 📌 Minimum Version: 1.0+
+   - 🎯 Used for: running BoxLang applications and scripts at the operating system level
+2. **CommandBox** - CLI toolchain, package manager, and server runtime
+   - 📥 Installation: <https://commandbox.ortusbooks.com/setup/installation>
+   - 📌 Minimum Version: 6.0+
+   - 🎯 Used for: dependency management, server starting, testing, and task automation
+3. **Maven** - Java dependency manager (Optional, only if you need Java dependencies)
+   - 📥 Installation: <https://maven.apache.org/install.html>
+   - 📌 Minimum Version: 3.6+
+   - 🎯 Used for: managing Java dependencies if your project requires them
+
+
+## ⚡ Quick Installation
+
+In order to work with this template, you need to have [CommandBox](https://www.ortussolutions.com/products/commandbox) and the [BoxLang](https://boxlang.ortusbooks.com/) operating system runtime installed on your machine.  CommandBox is the application server of choice for BoxLang applications.  Please note that running BoxLang web applications is different than the BoxLang OS runtime.  The BoxLang OS runtime is used to run BoxLang scripts and command line applications, while CommandBox is used to run web applications.
+
+```bash
+# Create a new ColdBox application using this BoxLang template
+box coldbox create app --boxlang
+# Setup the Template for Operation and preferences
+boxlang Setup.bx
+# Start up the web server
+box server start
+```
+
+Your application will be available at `http://localhost:8080` 🌐
+
+Code to your liking and enjoy! 🎊
+
 ## 📁 Application Structure
 
 This ColdBox 8 application follows a clean, modern architecture with the following structure:
@@ -88,29 +123,6 @@ This folder contains configuration files, dependencies, Docker setup, and runtim
     ├── swagger/              # API documentation (cbswagger)
     └── other module assets/  # Various module-specific resources
 ```
-
-## ⚡ Quick Installation
-
-In order to work with this template, you need to have [CommandBox](https://www.ortussolutions.com/products/commandbox) installed on your machine.  CommandBox is the application server of choice for BoxLang applications.
-
-```bash
-# Go into the CommandBox shell
-box
-# Create a new directory and go into it
-mkdir MyApp --cd
-# Create a new ColdBox application using the BoxLang template
-coldbox create app --boxlang
-```
-
-This will create a new ColdBox application using this BoxLang template and install all the needed dependencies.  You can then startup your BoxLang server using the following command:
-
-```bash
-box server start
-```
-
-Your application will be available at `http://localhost:8080` 🌐
-
-Code to your liking and enjoy! 🎊
 
 ## 🗺️ BoxLang Mappings
 

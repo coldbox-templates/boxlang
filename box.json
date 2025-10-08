@@ -9,7 +9,10 @@
     "language":"boxlang",
     "keywords":"boxlang",
     "shortDescription":"",
-    "ignore":[],
+    "ignore":[
+		"changelog.md",
+		".github/**"
+	],
     "dependencies":{
         "coldbox":"be",
         "route-visualizer":"^2.2.0+2"
@@ -17,7 +20,9 @@
     "devDependencies":{
         "testbox":"*",
         "commandbox-boxlang":"*",
-        "commandbox-cfformat":"*"
+        "commandbox-cfformat":"*",
+		"coldbox-cli":"*",
+		"testbox-cli":"*"
     },
     "installPaths":{
         "coldbox":"runtime/lib/coldbox/",
@@ -25,7 +30,6 @@
         "route-visualizer":"modules/route-visualizer/"
     },
     "scripts":{
-        "postInstall":"pathExists .env || cp .env.example .env && package set ignore=[]",
         "format":"cfformat run app/**/*.cfc,tests/specs/,*.cfc --overwrite",
         "format:check":"cfformat check app/**/*.cfc,tests/specs/,*.cfc ./.cfformat.json",
         "format:watch":"cfformat watch path='app/**/*.cfc,tests/specs/,*.cfc' settingsPath='.cfformat.json'",
