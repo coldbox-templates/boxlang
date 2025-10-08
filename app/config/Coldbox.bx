@@ -32,9 +32,9 @@ class {
 			sessionEndHandler        : "",
 			missingTemplateHandler   : "",
 			// Extension Points
-			applicationHelper        : "includes/helpers/ApplicationHelper.bxm",
+			applicationHelper        : "/app/helpers/ApplicationHelper.bxm",
 			viewsHelper              : "",
-			modulesExternalLocation  : [],
+			modulesExternalLocation  : [ "/modules" ],
 			viewsExternalLocation    : "",
 			layoutsExternalLocation  : "",
 			handlersExternalLocation : "",

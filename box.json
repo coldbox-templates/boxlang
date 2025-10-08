@@ -1,27 +1,18 @@
 {
     "name":"Default ColdBox App Template For BoxLang",
-    "version":"1.1.0",
+    "version":"1.0.0",
     "author":"You",
     "location":"forgeboxStorage",
-    "slug":"cbtemplate-bx-default",
+    "slug":"cbtemplate-boxlang",
     "createPackageDirectory":false,
     "type":"mvc",
-    "keywords":"",
-    "homepage":"",
-    "documentation":"",
-    "repository":{
-        "type":"",
-        "url":""
-    },
-    "bugs":"",
+    "language":"boxlang",
+    "keywords":"boxlang",
     "shortDescription":"",
-    "contributors":[],
-    "ignore":[
-        "changelog.md",
-        ".github/**"
-    ],
+    "ignore":[],
     "dependencies":{
-        "coldbox":"^7.4.0"
+        "coldbox":"be",
+        "route-visualizer":"^2.2.0+2"
     },
     "devDependencies":{
         "testbox":"*",
@@ -29,14 +20,15 @@
         "commandbox-cfformat":"*"
     },
     "installPaths":{
-        "coldbox":"coldbox/",
-        "testbox":"testbox/"
+        "coldbox":"runtime/lib/coldbox/",
+        "testbox":"runtime/lib/testbox/",
+        "route-visualizer":"modules/route-visualizer/"
     },
     "scripts":{
         "postInstall":"pathExists .env || cp .env.example .env && package set ignore=[]",
-        "format":"cfformat run config/,handlers/,interceptors/,models/,modules_app/,tests/specs/,*.bx ./.cfformat.json --overwrite",
-        "format:check":"cfformat check config/,handlers/,interceptors/,models/,modules_app/,tests/specs/,*.bx ./.cfformat.json",
-        "format:watch":"cfformat watch path='config/,handlers/,interceptors/,models/,modules_app/,tests/specs/,*.bx' settingsPath='.cfformat.json'",
+        "format":"cfformat run app/**/*.cfc,tests/specs/,*.cfc --overwrite",
+        "format:check":"cfformat check app/**/*.cfc,tests/specs/,*.cfc ./.cfformat.json",
+        "format:watch":"cfformat watch path='app/**/*.cfc,tests/specs/,*.cfc' settingsPath='.cfformat.json'",
         "docker:build":"!docker build --no-cache -t my-coldbox-app -f ./docker/Dockerfile ./",
         "docker:run":"!docker run -it -p 8080:8080 my-coldbox-app",
         "docker:bash":"!docker run -it my-coldbox-app /bin/bash",

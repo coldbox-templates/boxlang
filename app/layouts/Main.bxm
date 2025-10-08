@@ -10,7 +10,6 @@
 
 	<!---Base URL --->
 	<base href="#event.getHTMLBaseURL()#" />
-
 	<!---
 		CSS
 		- Bootstrap

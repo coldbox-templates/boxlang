@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>coldbox-app</groupId>
 	<artifactId>runtime-library</artifactId>
-	<version>@build.version@</version>
+	<version>1.0.0</version>
 
 	<dependencies>
 		<!--
@@ -39,7 +39,7 @@
 							<goal>copy-dependencies</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.basedir}/lib/java</outputDirectory>
+							<outputDirectory>${project.basedir}/runtime/lib</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>
