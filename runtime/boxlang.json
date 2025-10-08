@@ -59,32 +59,13 @@
 	// The key can also be a struct containing a "path" and "external" property
 	// A non-external mapping will not be used in the web runtimes to resolve incoming file paths
 	"mappings": {
-		"/": "${user-dir}/public",
-		"/root" : "${user-dir}/app",
-		"/app": {
-			"path": "${user-dir}/app",
-			"external": false
-		},
-		"/coldbox" : {
-			"path": "${user-dir}/runtime/lib/coldbox",
-			"external": false
-		},
-		"/coldbox/system/exceptions": {
-			"path": "${user-dir}/runtime/lib/coldbox/system/exceptions",
-			"external": true
-		},
-		"/testbox" : {
-			"path": "${user-dir}/runtime/lib/testbox",
-			"external": true
-		},
-		"/runtime" : {
-			"path": "${user-dir}/runtime",
-			"external": false
-		},
-		"/modules" : {
-			"path": "${user-dir}/modules",
-			"external": true
-		}
+		"/app" :  {"path": "${user-dir}/app", "external": false },
+		"/public" : "${user-dir}/public",
+		"/coldbox" :  {"path": "${user-dir}/runtime/lib/coldbox", "external": false },
+		"/coldbox/system/exceptions" :  {"path": "${user-dir}/runtime/lib/coldbox/system/exceptions", "external": true },
+		"/modules" :  {"path": "${user-dir}/modules", "external": true },
+		"/testbox" :  "${user-dir}/runtime/lib/testbox",
+		"/tests" : "${user-dir}/tests"
 	},
 	// A collection of BoxLang module directories, they must be absolute paths or expanded paths
 	"modulesDirectory": [

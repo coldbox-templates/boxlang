@@ -5,25 +5,28 @@
  */
 class {
 
-	// APPLICATION CFC PROPERTIES
-	this.name                 = "ColdBoxTestingSuite";
-	this.sessionManagement    = true;
-	this.setClientCookies     = true;
-	this.sessionTimeout       = createTimespan( 0, 0, 15, 0 );
-	this.applicationTimeout   = createTimespan( 0, 0, 15, 0 );
+	/**
+	 * --------------------------------------------------------------------------
+	 * Application Properties: Modify as you see fit!
+	 * --------------------------------------------------------------------------
+	 */
+	this.name = "ColdBoxTestingSuite"
+	this.sessionManagement = true
+	this.setClientCookies = true
+	this.sessionTimeout = createTimespan( 0, 0, 15, 0 )
+	this.applicationTimeout = createTimespan( 0, 0, 15, 0 )
 
 	/**
 	 * --------------------------------------------------------------------------
 	 * Location Mappings
 	 * --------------------------------------------------------------------------
-	 * - cbApp : Quick reference to root application
-	 * - coldbox : Where ColdBox library is installed
-	 * - testbox : Where TestBox is installed
+	 * The majority of mappings are in the boxlang.json pre-configured for you
+	 * so they can be reused.
 	 */
+	_testsRoot = getDirectoryFromPath( getCurrentTemplatePath() )
+	_appRoot = REReplaceNoCase( _testsRoot, "tests(\\|/)", "" )
 	// Create testing mapping
-	this.mappings[ "/tests" ]   = getDirectoryFromPath( getCurrentTemplatePath() );
-	// The root application mapping
-	rootPath                    = reReplaceNoCase( this.mappings[ "/tests" ], "tests(\\|/)", "" );
+	this.mappings[ "/tests" ]   = _testsRoot
 
 	/**
 	 * Fires on every test request. It builds a Virtual ColdBox application for you
@@ -31,13 +34,15 @@ class {
 	 * @targetPage The requested page
 	 */
 	public boolean function onRequestStart( targetPage ) output="true"{
-		pagePoolClear();
-		writeDump( var=expandPath( "/testbox/system" ), top = 5, showUDFs = false );
-		abort;
 		// Set a high timeout for long running tests
 		bx:setting requestTimeout   ="9999";
+		// Clear the page pool on each request for test freshness
+		pagePoolClear()
 		// New ColdBox Virtual Application Starter
-		request.coldBoxVirtualApp= new coldbox.system.testing.VirtualApp( appMapping = "/root" );
+		request.coldBoxVirtualApp= new coldbox.system.testing.VirtualApp(
+			appMapping : "/app",
+			webMapping : "/public"
+		)
 
 		// If hitting the runner or specs, prep our virtual app
 		if ( getBaseTemplatePath().replace( expandPath( "/tests" ), "" ).reFindNoCase( "(runner|specs)" ) ) {

@@ -23,13 +23,10 @@ class{
 	 * --------------------------------------------------------------------------
 	 * Location Mappings
 	 * --------------------------------------------------------------------------
-	 * The following mappings are registered globally in your /runtime/config/boxlang.json
-	 * - /, /root -> points to your web root
-	 * - /app -> points to your application folder (Not web accessible)
-	 * - /modules -> points to your modules folder (Web accessible)
-	 * - /coldbox -> points to your ColdBox installation (Not web accessible)
-	 * - /runtime -> points to your application's runtime folder (Not web accessible)
+	 * These are pre-defined in the runtime/config/boxlang.json so they can
+	 * be reused.  You can change them here if you want.
 	 */
+	_publicRoot = getDirectoryFromPath( getCurrentTemplatePath() );
 
 	/**
 	 * --------------------------------------------------------------------------

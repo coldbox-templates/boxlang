@@ -11,7 +11,8 @@
     "shortDescription":"",
     "ignore":[],
     "dependencies":{
-        "coldbox":"be"
+        "coldbox":"be",
+        "route-visualizer":"^2.2.0+2"
     },
     "devDependencies":{
         "testbox":"*",
@@ -20,7 +21,8 @@
     },
     "installPaths":{
         "coldbox":"runtime/lib/coldbox/",
-        "testbox":"runtime/lib/testbox/"
+        "testbox":"runtime/lib/testbox/",
+        "route-visualizer":"modules/route-visualizer/"
     },
     "scripts":{
         "postInstall":"pathExists .env || cp .env.example .env && package set ignore=[]",

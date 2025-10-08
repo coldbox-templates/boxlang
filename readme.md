@@ -30,38 +30,38 @@ Welcome to the modern ColdBox 8 BoxLang application template! 🎉 This template
 
 This ColdBox 8 application follows a clean, modern architecture with the following structure:
 
-### 🏗️ Core Application (`/app/`)
+### 🏗️ ColdBox Application (`/app/`)
 
-This folder contains the main application code, including configuration files, event handlers, models, views, and more.
+This folder contains the main ColdBox application code via conventions, including configuration files, event handlers, models, views, and more.  This is where you will be coding most of your application logic.
 
 ```text
 app/
-├── 🔧 config/                # Configuration files
+├── 🔧 config/                # Configuration files (Optional)
 │   ├── CacheBox.bx           # Caching configuration
 │   ├── ColdBox.bx            # Main framework settings
 │   ├── Router.bx             # URL routing definitions
 │   ├── Scheduler.bx          # Task scheduling
 │   └── WireBox.bx            # Dependency injection
 ├── 🎮 handlers/              # Event handlers (controllers)
-├── 🛠️ helpers/               # Application helpers
+├── 🛠️ helpers/               # Application helpers (Optional)
 ├── 🎨 layouts/               # View layouts
-├── 📝 logs/                  # ColdBox logs
+├── 📝 logs/                  # ColdBox logs (Optional)
 ├── 🏗️ models/                # Business logic models
-├── 📦 modules_app/           # Application-specific modules
+├── 📦 modules_app/           # Application-specific modules (Optional)
 └── 👁️ views/                 # View templates
 ```
 
 ### 🌐 Public Web Root (`/public/`)
 
-This folder contains all the publicly accessible assets and the main application entry point.
+This folder contains all the publicly accessible assets and the main application entry point.  The CommandBox or MiniServer or Whatever server will point to this folder as the web root.
 
 ```text
 public/
-├── 📱 Application.bx         # Web-facing application
-├── 🎯 index.bxm              # Main entry point
+├── 📱 Application.bx         # Web-facing application Bootstrap
+├── 🎯 index.bxm              # Main entry point (Empty)
 ├── 🖼️ favicon.ico            # Site icon
 ├── 🤖 robots.txt             # Search engine directives
-└── 📦 includes/              # CSS, JS, images
+└── 📦 includes/              # CSS, JS, images or any resources you want
 ```
 
 ### 🔧 Configuration & Build
@@ -71,17 +71,17 @@ This folder contains configuration files, dependencies, Docker setup, and runtim
 ```text
 ├── 📋 box.json               # CommandBox dependencies and project descriptor
 ├── 🏗️ pom.xml                # Maven dependencies (Optional)
-├── 🖥️ server.json            # Server configuration
-├── 🐳 docker/                # Docker configuration
-├── 🧪 tests/                 # Test suites
+├── 🖥️ server.json            # CommandBox Server configuration
+├── 🐳 docker/                # Docker configuration (Optional)
+├── 🧪 tests/                 # Test suites (NOT OPTIONAL)
 ├── 📦 modules/               # ColdBox application modules (Managed by CommandBox)
-├── ⚙️ runtime/               # BoxLang runtime environment
-│   ├── config/               # Custom BoxLang configuration
-│   ├── global/               # Global classes and BoxLang components
+├── ⚙️ runtime/               # BoxLang runtime environment overrides and resources
+│   ├── 🔧 boxlang.json               # Custom BoxLang configuration overrides
+│   ├── global/               # Global classes and BoxLang components (Optional)
 │   │   ├── classes/          # Global BoxLang classes
 │   │   └── components/       # Global BoxLang components
-│   ├── lib/                  # Java class loader libraries
-│   ├── logs/                 # Server logs
+│   ├── lib/                  # Runtime libraries (Managed by Maven/CommandBox)
+│   ├── logs/                 # BoxLang logs
 │   ├── modules/              # BoxLang runtime modules
 └── 📚 resources/             # ColdBox/CommandBox module resources
     ├── migrations/           # Database migrations (cbmigrations)
@@ -92,15 +92,18 @@ This folder contains configuration files, dependencies, Docker setup, and runtim
 
 ## ⚡ Quick Installation
 
-In order to work with this template, you need to have [CommandBox](https://www.ortussolutions.com/products/commandbox) installed on your machine. CommandBox is a powerful CLI tool and package manager for BoxLang and CFML developers.
-You will most likely issue a few commands to get the application up and running.
+In order to work with this template, you need to have [CommandBox](https://www.ortussolutions.com/products/commandbox) installed on your machine.  CommandBox is the application server of choice for BoxLang applications.
 
 ```bash
+# Go into the CommandBox shell
+box
+# Create a new directory and go into it
 mkdir MyApp --cd
+# Create a new ColdBox application using the BoxLang template
 coldbox create app --boxlang
 ```
 
-This will create a new ColdBox application using the BoxLang template and install all the needed dependencies.  You can then startup your BoxLang server using the following command:
+This will create a new ColdBox application using this BoxLang template and install all the needed dependencies.  You can then startup your BoxLang server using the following command:
 
 ```bash
 box server start
@@ -117,10 +120,9 @@ This template comes pre-configured with essential BoxLang mappings in the `runti
 ### 📍 Core Application Mappings
 
 ```json
-"/": "${user-dir}/public",           // Web root directory
-"/root": "${user-dir}/app",          // Alias app root mapping for testing purposes
-"/app": "${user-dir}/app",           // ColdBox application directory
-"/runtime": "${user-dir}/runtime"    // BoxLang runtime environment
+"/public": "${user-dir}/public",           // Public web root
+"/app": "${user-dir}/app",                 // ColdBox application
+"/tests": "${user-dir}/tests",         // Test suites (Can be removed for production)
 ```
 
 ### 🏗️ Framework & Library Mappings

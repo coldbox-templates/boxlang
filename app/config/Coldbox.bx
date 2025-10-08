@@ -34,7 +34,7 @@ class {
 			// Extension Points
 			applicationHelper        : "/app/helpers/ApplicationHelper.bxm",
 			viewsHelper              : "",
-			modulesExternalLocation  : [],
+			modulesExternalLocation  : [ "/modules" ],
 			viewsExternalLocation    : "",
 			layoutsExternalLocation  : "",
 			handlersExternalLocation : "",

@@ -1,9 +1,8 @@
 {
     "name":"boxlang-coldbox-start-template",
     "app":{
-        "cfengine":"boxlang@be",
-        "serverHomeDirectory":"./.engine",
-        "engineConfigFile":"./runtime/config/boxlang.json"
+        "cfengine":"boxlang@1",
+        "engineConfigFile":"./runtime/boxlang.json"
     },
     "jvm":{
         "heapSize":"512",
