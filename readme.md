@@ -161,7 +161,7 @@ box server start
 
 > **🚀 Pro Tip**: Integrate `Build.bx` into your CI/CD pipeline to automatically build and deploy your application on every release!
 
-## �📁 Application Structure
+## 📁Application Structure
 
 This ColdBox 8 application follows a clean, modern architecture with the following structure:
 
