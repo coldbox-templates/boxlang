@@ -24,3 +24,4 @@ yarn-error.log
 effective-pom.xml
 runtime/lib/**
 runtime/java/**
+.devcontainer/.db/**
