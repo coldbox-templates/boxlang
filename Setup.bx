@@ -56,13 +56,11 @@ class{
 		)
 
 		// Delete this setup file
-		println( "🧹 Cleaning up the Setup.bx ..." )
-		fileDelete( "Setup.bx" )
-
 		println( "🥊  Your ColdBox application is ready to roll!" )
 		println( "👉  Run 'box server start' to launch the development server." )
 		println( "👉  Run 'box coldbox help' to see a list of available commands from the ColdBox CLI" )
-		println( "👉  Happy coding!" )
+		println( "ℹ️. You can remove the [Setup.bx] file from your project now or keep it for future reference." )
+		println( "🗳️  Happy coding!" )
 	}
 
 }
