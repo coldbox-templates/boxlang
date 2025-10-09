@@ -78,6 +78,17 @@ class{
 			directoryDelete( "resources/docker", true )
 		}
 
+		// Dev Container
+		var devcontainer = CLIRead( "🙋 Do you want to keep the Dev Container setup so you can code in GitHub (.devcontainer)? (y/n): " ).toLowerCase().booleanFormat();
+		if( !devcontainer ){
+			println( "🧹 Cleaning up unnecessary files" )
+			directoryDelete( ".devcontainer", true )
+		} else {
+			println( "ℹ️. Your Dev Container files are located in the [.devcontainer] directory" )
+			println( "👉  You can open this project in a container in VS Code by clicking the green button in the bottom left corner." )
+			println( "👉  You can customize the container by modifying the [.devcontainer/devcontainer.json] and [.devcontainer/Dockerfile] files." )
+		}
+
 		// Remove the ignore array from box.json
 		println( "🛁 Cleaning up your box.json" )
 		result = systemExecute(
