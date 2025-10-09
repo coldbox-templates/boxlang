@@ -9,7 +9,8 @@ export default defineConfig({
 		tailwindcss(),
 		coldbox({
 			input: [ "resources/assets/css/app.css", "resources/assets/js/app.js" ],
-			refresh: true
+			refresh: true,
+			publicDirectory: "public/includes"
 		})
 	],
 });

@@ -11,6 +11,9 @@ build/**
 .cbfs/**
 docker/.db/**
 
+# Vite
+/public/includes/build/**
+
 # logs + tests
 app/logs/**
 runtime/logs/**
