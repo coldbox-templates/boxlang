@@ -20,6 +20,6 @@
         }
     },
     "scripts":{
-        "onServerInitialInstall":"install bx-esapi,bx-mysql"
+        "onServerInitialInstall":"install bx-esapi"
     }
 }
