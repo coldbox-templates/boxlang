@@ -42,6 +42,28 @@ class{
 			}
 		}
 
+		// Vite Setup?
+		var vite = CLIRead( "Do you want to use Vite for your frontend build system? (y/n): " ).toLowerCase().booleanFormat();
+		if( vite ){
+			println( "🥊 Setting up Vite for your frontend build system" )
+			// Copy the vite/.babelrc, vite/package.json, vite/vite.config.js to the root
+			fileMove( "vite/.babelrc", ".babelrc" )
+			fileMove( "vite/package.json", "package.json" )
+			fileMove( "vite/vite.config.js", "vite.config.js" )
+			// Copy and override resources/vite/layouts/Main.bxm -> /app/layouts/Main.bxm
+			fileMove( "resources/vite/layouts/Main.bxm", "app/layouts/Main.bxm", true )
+			fileMove( "resources/vite/assets", "resources/assets" )
+			// Delete the vite directory
+			directoryDelete( "resources/vite", true )
+			println( "✅ Vite setup complete!" )
+			println( "👉  You can run 'npm install' to install the dependencies" )
+			println( "👉  You can run 'npm run dev' to start the development server" )
+			println( "👉  You can run 'npm run build' to build the production assets" )
+		} else {
+			// Delete vite resources
+			directoryDelete( "resources/vite", true )
+		}
+
 		// Remove the ignore array from box.json
 		println( "🛁 Cleaning up your box.json" )
 		result = systemExecute(
@@ -49,14 +71,9 @@ class{
 			arguments: "package set ignore=[]",
 			directory: static.projectRoot
 		)
-		result = systemExecute(
-			name: "box",
-			arguments: "package clear scripts.postInstall",
-			directory: static.projectRoot
-		)
 
 		// Delete this setup file
-		println( "🥊  Your ColdBox application is ready to roll!" )
+		println( "🥊  Your ColdBox BoxLang application is ready to roll!" )
 		println( "👉  Run 'box server start' to launch the development server." )
 		println( "👉  Run 'box coldbox help' to see a list of available commands from the ColdBox CLI" )
 		println( "ℹ️. You can remove the [Setup.bx] file from your project now or keep it for future reference." )
