@@ -27,7 +27,7 @@ class{
 
 		// Maven setup
 		// Ask the user if they want to use Maven for Java dependency management
-		var maven = CLIRead( "Do you want to use Maven for any Java dependency management? (y/n): " ).toLowerCase().booleanFormat();
+		var maven = CLIRead( "🙋 Do you want to use Maven for any Java dependency management? (y/n): " ).toLowerCase().booleanFormat();
 		if( maven ){
 			println( "🥊 Setting up a [pom.xml] in your root for Java dependency management" )
 			println( "👉  You can add your Java dependencies to the [dependencies] section of the pom.xml" )
@@ -43,18 +43,18 @@ class{
 		}
 
 		// Vite Setup?
-		var vite = CLIRead( "Do you want to use Vite for your frontend build system? (y/n): " ).toLowerCase().booleanFormat();
+		var vite = CLIRead( "🙋 Do you want to use Vite for your frontend build system? (y/n): " ).toLowerCase().booleanFormat();
 		if( vite ){
 			println( "🥊 Setting up Vite for your frontend build system" )
 			// Copy the vite/.babelrc, vite/package.json, vite/vite.config.js to the root
-			fileMove( "vite/.babelrc", ".babelrc" )
-			fileMove( "vite/package.json", "package.json" )
-			fileMove( "vite/vite.config.js", "vite.config.js" )
+			fileCopy( "resources/vite/.babelrc", ".babelrc" )
+			fileCopy( "resources/vite/package.json", "package.json" )
+			fileCopy( "resources/vite/vite.config.mjs", "vite.config.mjs" )
 			// Copy and override resources/vite/layouts/Main.bxm -> /app/layouts/Main.bxm
-			fileMove( "resources/vite/layouts/Main.bxm", "app/layouts/Main.bxm", true )
-			fileMove( "resources/vite/assets", "resources/assets" )
+			fileDelete( "app/layouts/Main.bxm" )
+			fileCopy( "resources/vite/layouts/Main.bxm", "app/layouts/Main.bxm" )
+			fileCopy( "resources/vite/assets", "resources/assets" )
 			// Delete the vite directory
-			directoryDelete( "resources/vite", true )
 			println( "✅ Vite setup complete!" )
 			println( "👉  You can run 'npm install' to install the dependencies" )
 			println( "👉  You can run 'npm run dev' to start the development server" )
