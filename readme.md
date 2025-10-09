@@ -71,16 +71,239 @@ boxlang Setup.bx
 
 ### What Setup.bx Does:
 
-The setup script walks you through several configuration options:
+The setup script is an **interactive wizard** that walks you through several configuration options to tailor the template to your project needs:
 
-- **📝 Project Information**: Set your application name, author, and description
-- **🎨 Customization**: Configure project-specific settings
-- **🔐 Environment Setup**: Generate `.env` files and configure environment variables
-- **📦 Dependencies**: Install additional dependencies based on your selections
-- **✅ Validation**: Verify your environment is properly configured
-- **🤖 Creates AI Instructions**: Generates AI usage instructions based on your project setup
+#### 1️⃣ **Environment Configuration** (`.env` file)
 
-> **💡 Tip**: Run `Setup.bx` immediately after creating your application to ensure everything is configured correctly for your development environment.
+- Automatically creates a `.env` file from `.env.example` if it doesn't exist
+- Skips creation if `.env` already exists to preserve your settings
+- Sets up environment variables for database connections, API keys, and more
+
+#### 2️⃣ **AI Development Assistant** (Copilot Instructions)
+
+- Creates `.github/copilot-instructions.md` for AI-powered coding assistance
+- Provides context-aware suggestions based on ColdBox and BoxLang conventions
+- Compatible with GitHub Copilot, Cursor, Windsurf, and other AI assistants
+- Includes project structure, patterns, and best practices documentation
+
+#### 3️⃣ **Java Dependency Management** (Maven)
+
+- **Prompt**: "Do you want to use Maven for any Java dependency management?"
+- **If YES**: Keeps `pom.xml` for managing Java dependencies
+  - Add dependencies to the `<dependencies>` section
+  - Run `mvn install` to download them to `runtime/lib/`
+  - BoxLang automatically class-loads all JARs in that folder
+- **If NO**: Removes `pom.xml` and `effective-pom.xml` files
+
+#### 4️⃣ **REST API Configuration**
+
+- **Prompt**: "Is this a REST API only project?"
+- **If YES**: Configures your application as a RESTful API
+  - Installs production modules: `cbsecurity`, `mementifier`, `cbvalidation`
+  - Installs development modules: `route-visualizer`, `relax`
+  - Replaces default Router with REST-optimized routing
+  - Updates handlers to REST-focused controllers
+  - Adds API documentation templates in `resources/apidocs/`
+  - Updates tests for API testing patterns
+  - Sets default routes to `Echo.index` and `Echo.onError`
+- **If NO**: Keeps traditional MVC structure with views and layouts
+
+#### 5️⃣ **Frontend Build System** (Vite)
+
+- **Prompt**: "Do you want to use Vite for your frontend build system?" (Only if not API-only)
+- **If YES**: Sets up modern frontend tooling with Vite
+  - Copies `vite.config.mjs` configuration
+  - Adds `package.json` with Vue 3, Tailwind CSS support
+  - Updates `Main.bxm` layout with Vite integration
+  - Creates `resources/assets/` directory for CSS/JS
+  - Instructions for `npm install`, `npm run dev`, `npm run build`
+- **If NO**: Removes Vite-related files
+
+#### 6️⃣ **Docker Containerization**
+
+- **Prompt**: "Do you want to use Docker for containerization?"
+- **If YES**: Sets up Docker infrastructure
+  - Creates `docker/` directory with Dockerfile
+  - Adds `docker-compose.yml` for multi-container setup
+  - Includes `.dockerignore` for optimized builds
+  - Provides scripts: `docker:build`, `docker:run`, `docker:bash`, `docker:stack`
+- **If NO**: Removes Docker files
+
+#### 7️⃣ **Dev Container Support**
+
+- **Prompt**: "Do you want to keep the Dev Container setup so you can code in GitHub?"
+- **If YES**: Keeps `.devcontainer/` for VS Code Remote Containers
+  - Enables coding in a consistent containerized environment
+  - Includes configuration in `.devcontainer/devcontainer.json`
+  - Customizable via `.devcontainer/Dockerfile`
+- **If NO**: Removes `.devcontainer/` directory
+
+#### 8️⃣ **Cleanup & Finalization**
+
+- Cleans up `box.json` by removing the build ignore array
+- Provides helpful next steps and commands
+- Optionally remove `Setup.bx` itself after completion
+
+### 🎯 Example Setup Flow:
+
+```bash
+$ boxlang Setup.bx
+🥊 Creating .env file from .env.example
+🥊 Creating .github directory
+🥊 Creating copilot file
+🙋 Do you want to use Maven for any Java dependency management? (y/n): y
+🥊 Setting up a [pom.xml] in your root for Java dependency management
+🙋 Is this a REST API only project? (y/n): y
+🥊 Setting up a REST API only ColdBox application
+🥊 Installing ColdBox API Production Modules: Security, Mementifier, Validation
+🥊 Installing ColdBox API Development Modules: route-visualizer,relax
+✅ REST API only setup complete!
+🙋 Do you want to use Docker for containerization? (y/n): y
+🥊 Setting up Docker for containerization
+✅ Docker setup complete!
+🙋 Do you want to keep the Dev Container setup? (y/n): n
+🧹 Cleaning up unnecessary files
+🛁 Cleaning up your box.json
+🥊 Your ColdBox BoxLang application is ready to roll!
+👉 Run 'box server start' to launch the development server.
+```>
+
+> **💡 Best Practice**: Run `Setup.bx` immediately after creating your application to ensure everything is configured correctly for your specific use case. You can always modify these choices later by manually adjusting the relevant files.
+
+## ⚡ Vite Frontend Build System
+
+If you chose to use **Vite** during setup, this template includes a modern frontend build system with Vue 3 and Tailwind CSS support. Vite provides lightning-fast hot module replacement (HMR) and optimized production builds.
+
+### 🔧 Vite Configuration
+
+The `vite.config.mjs` file is pre-configured with sensible defaults for ColdBox applications:
+
+```javascript
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import tailwindcss from "@tailwindcss/vite";
+import coldbox from "coldbox-vite-plugin";
+
+export default defineConfig({
+    plugins: [
+        coldbox({
+            input: [ "resources/assets/css/app.css", "resources/assets/js/app.js" ],
+            refresh: true,
+            publicDirectory: "public",      // Web root directory
+            buildDirectory: "includes"      // Output directory within public
+        }),
+        vue(),
+        tailwindcss()
+    ]
+});
+```
+
+#### 🎯 Key Configuration Options:
+
+- **`input`**: Entry points for CSS and JavaScript files
+- **`refresh`**: Enable automatic browser refresh when ColdBox views/layouts change
+- **`publicDirectory`**: The web root directory (default: `"public"`)
+- **`buildDirectory`**: Where compiled assets are written (default: `"includes"`)
+  - Assets output to: `{publicDirectory}/{buildDirectory}/`
+  - Example: `public/includes/` with the defaults above
+
+### 📂 Asset Structure:
+
+```text
+resources/
+└── assets/
+    ├── css/
+    │   └── app.css          # Main stylesheet (Tailwind)
+    └── js/
+        └── app.js           # Main JavaScript (Vue 3 app)
+
+public/
+└── includes/                # Compiled assets (generated by Vite)
+    ├── manifest.json        # Asset manifest for production
+    └── assets/
+        ├── app-[hash].css   # Compiled & hashed CSS
+        └── app-[hash].js    # Compiled & hashed JS
+```
+
+### 🚀 Using Vite:
+
+#### Development Mode (Hot Module Replacement):
+
+```bash
+npm run dev
+```
+
+This starts the Vite development server with HMR at `http://localhost:5173`. The ColdBox application automatically detects the dev server and loads assets from it.
+
+#### Production Build:
+
+```bash
+npm run build
+```
+
+Compiles and optimizes assets for production, outputting them to `public/includes/`. The generated files include content hashes for cache busting.
+
+### 📝 Including Assets in Views:
+
+The `vite()` helper function automatically loads assets based on the environment:
+
+```boxlang
+<!--- In your Main.bxm layout --->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    #vite([
+        "resources/assets/css/app.css",
+        "resources/assets/js/app.js"
+    ])#
+</head>
+```
+
+**Development**: Loads from Vite dev server (`http://localhost:5173`)
+**Production**: Loads compiled assets from `public/includes/assets/`
+
+### 🎨 Customizing Vite:
+
+#### Change Output Directory:
+
+```javascript
+coldbox({
+    input: [ "resources/assets/css/app.css", "resources/assets/js/app.js" ],
+    refresh: true,
+    publicDirectory: "public",
+    buildDirectory: "dist"      // Assets output to public/dist/
+})
+```
+
+#### Add More Entry Points:
+
+```javascript
+coldbox({
+    input: [
+        "resources/assets/css/app.css",
+        "resources/assets/js/app.js",
+        "resources/assets/js/admin.js",     // Additional JS entry
+        "resources/assets/css/admin.css"    // Additional CSS entry
+    ],
+    refresh: true
+})
+```
+
+#### Configure Refresh Paths:
+
+```javascript
+coldbox({
+    input: [ "resources/assets/css/app.css", "resources/assets/js/app.js" ],
+    refresh: [
+        "app/layouts/**",
+        "app/views/**",
+        "app/config/Router.bx",
+        "app/handlers/**/*.bx"   // Also refresh on handler changes
+    ]
+})
+```
+
+> **📚 Learn More**: Check out the [coldbox-vite-plugin documentation](https://github.com/coldbox/coldbox-vite-plugin) and [Vite documentation](https://vitejs.dev) for advanced configuration options.
 
 ## 📦 Build Script (`Build.bx`)
 
@@ -124,26 +347,111 @@ build/
 
 ### Customizing the Build:
 
-You can customize what gets included or excluded by editing the `Build.bx` file:
+You can customize what gets included or excluded by editing the `Build.bx` file's initialization section. The build script uses two configurable arrays:
+
+#### 📦 **Sources Array** - What to Include
+
+Controls which directories and files get packaged in your distribution:
 
 ```boxlang
-// Add directories/files to package
+// Source directories to package
 variables.sources = [
+    ".cbmigrations.json",  // Database migrations state
+    "box.json",            // Project metadata
+    "app",                 // Your ColdBox application
+    "modules",             // Installed modules
+    "public",              // Web root with assets
+    "runtime"              // BoxLang runtime config
+];
+```
+
+**To add more sources**, simply append to the array:
+
+```boxlang
+variables.sources = [
+    ".cbmigrations.json",
+    "box.json",
     "app",
     "modules",
     "public",
     "runtime",
-    "config"  // Add your own
-];
-
-// Add exclusion patterns (regex)
-variables.excludes = [
-    "logs/",           // Exclude all log directories
-    "\.log$",          // Exclude .log files
-    "\.tmp$",          // Exclude .tmp files
-    "test-results/"    // Exclude test output
+    "config",              // Add custom config directory
+    "resources/database"   // Include database resources
 ];
 ```
+
+#### 🚫 **Excludes Array** - What to Skip
+
+Uses **regex patterns** to exclude files/directories from the build:
+
+```boxlang
+// Files and folders to exclude from the build (regex patterns)
+variables.excludes = [
+    "logs/",           // Log directories
+    "\.DS_Store$",     // macOS system files
+    "Thumbs\.db$"      // Windows system files
+];
+```
+
+**Common exclusion patterns**:
+
+```boxlang
+variables.excludes = [
+    "logs/",              // Exclude all log directories
+    "\.log$",             // Exclude .log files
+    "\.tmp$",             // Exclude .tmp files
+    "test-results/",      // Exclude test output
+    "node_modules/",      // Exclude npm dependencies
+    "\.git",              // Exclude git repository
+    "\.env",              // Exclude environment files
+    "\.bak$",             // Exclude backup files
+    "resources/vite/",    // Exclude vite resources after setup
+    "resources/rest/"     // Exclude rest resources after setup
+];
+```
+
+**Regex Pattern Tips**:
+- Use `$` to match end of string: `\.log$` matches files ending in `.log`
+- Use `/` to match directories: `logs/` matches any `logs` directory
+- Use `\.` to escape dots: `\.DS_Store$` matches `.DS_Store` files
+- Use `.*` for wildcards: `temp.*` matches anything starting with `temp`
+
+#### 🔧 **Example: Custom Build Configuration**
+
+```boxlang
+function init(){
+    // ... existing code ...
+
+    // Custom sources for your project
+    variables.sources = [
+        ".cbmigrations.json",
+        "box.json",
+        "app",
+        "modules",
+        "public",
+        "runtime",
+        "custom-config",        // Add your custom directory
+        "static-files"          // Add static file directory
+    ];
+
+    // Comprehensive exclusions
+    variables.excludes = [
+        "logs/",                // No log files
+        "\.DS_Store$",          // No macOS files
+        "Thumbs\.db$",          // No Windows files
+        "test-results/",        // No test outputs
+        "\.env\..*",            // No environment files
+        "resources/vite/",      // No vite setup resources
+        "resources/rest/",      // No rest setup resources
+        "resources/docker/",    // No docker setup resources
+        "Setup\.bx$"            // No setup script
+    ];
+
+    return this;
+}
+```
+
+> **💡 Pro Tip**: Review your `variables.excludes` after running `Setup.bx` to ensure you're not packaging unnecessary setup resources!
 
 ### Deploying Your Build:
 
