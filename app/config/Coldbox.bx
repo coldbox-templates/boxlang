@@ -23,7 +23,7 @@ class {
 			reinitKey                : "fwreinit",
 			handlersIndexAutoReload  : true,
 			// Implicit Events
-			defaultEvent             : "",
+			defaultEvent             : "Main.index",
 			requestStartHandler      : "Main.onRequestStart",
 			requestEndHandler        : "",
 			applicationStartHandler  : "Main.onAppInit",

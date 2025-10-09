@@ -64,6 +64,11 @@ class{
 			directoryCopy( source: "resources/rest/apidocs", destination: "resources/apidocs", recurse: true, createPath: true )
 			directoryDelete( "resources/rest", true )
 
+			var newConfig = fileRead( "app/config/Coldbox.bx" )
+				.replace( "Main.index", "Echo.index" )
+				.replace( "Main.onException", "Echo.onError" );
+			fileWrite( "app/config/Coldbox.bx", newConfig );
+
 			// Install CommandBox Modules
 			println( "🥊 Installing ColdBox API Production Modules: Security, Mementifier, Validation" )
 			result = systemExecute(
