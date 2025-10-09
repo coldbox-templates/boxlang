@@ -54,6 +54,8 @@ class{
 			// Tests
 			directoryDelete( "tests/specs", true )
 			directoryCopy( source: "resources/rest/specs", destination: "tests/specs", recurse: true, createPath: true )
+			// Configuration
+			directoryCopy( source: "resources/rest/config/modules", destination: "app/config/modules", recurse: false, createPath: true )
 			// Models
 			directoryDelete( "app/models", true )
 			directoryCopy( source: "resources/rest/models", destination: "app/models", recurse: true, createPath: true )
