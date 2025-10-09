@@ -46,22 +46,36 @@ class{
 		var vite = CLIRead( "🙋 Do you want to use Vite for your frontend build system? (y/n): " ).toLowerCase().booleanFormat();
 		if( vite ){
 			println( "🥊 Setting up Vite for your frontend build system" )
-			// Copy the vite/.babelrc, vite/package.json, vite/vite.config.js to the root
 			fileCopy( "resources/vite/.babelrc", ".babelrc" )
 			fileCopy( "resources/vite/package.json", "package.json" )
 			fileCopy( "resources/vite/vite.config.mjs", "vite.config.mjs" )
-			// Copy and override resources/vite/layouts/Main.bxm -> /app/layouts/Main.bxm
 			fileDelete( "app/layouts/Main.bxm" )
 			fileCopy( "resources/vite/layouts/Main.bxm", "app/layouts/Main.bxm" )
 			fileCopy( "resources/vite/assets", "resources/assets" )
-			// Delete the vite directory
 			println( "✅ Vite setup complete!" )
 			println( "👉  You can run 'npm install' to install the dependencies" )
 			println( "👉  You can run 'npm run dev' to start the development server" )
 			println( "👉  You can run 'npm run build' to build the production assets" )
 		} else {
-			// Delete vite resources
 			directoryDelete( "resources/vite", true )
+		}
+
+		// Docker Setup?
+		var docker = CLIRead( "🙋 Do you want to use Docker for containerization? (y/n): " ).toLowerCase().booleanFormat();
+		if( docker ){
+			println( "🥊 Setting up Docker for containerization" )
+			directoryCreate( "docker", true, true )
+			fileCopy( "resources/docker/Dockerfile", "docker/Dockerfile" )
+			fileCopy( "resources/docker/docker-compose.yml", "docker/docker-compose.yml" )
+			fileCopy( "resources/docker/.dockerignore", ".dockerignore" )
+			println( "✅ Docker setup complete!" )
+			println( "ℹ️. Your docker files are located in the [docker] directory" )
+			println( "👉  You can run 'box run-script docker:build' to build your Docker image." )
+			println( "👉  You can run 'box run-script docker:run' to run your Docker container." )
+			println( "👉  You can run 'box run-script docker:bash' to go into the container shell." )
+			println( "👉  You can run 'box run-script docker:stack' to startup the Docker Compose Stack" )
+		} else {
+			directoryDelete( "resources/docker", true )
 		}
 
 		// Remove the ignore array from box.json
