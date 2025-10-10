@@ -24,9 +24,7 @@
         "route-visualizer":"^2.2.0+2",
         "testbox":"*",
         "commandbox-boxlang":"*",
-        "commandbox-cfformat":"*",
-        "coldbox-cli":"*",
-        "testbox-cli":"*"
+        "commandbox-cfformat":"*"
     },
     "installPaths":{
         "coldbox":"runtime/lib/coldbox/",
