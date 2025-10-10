@@ -11,7 +11,7 @@
     "shortDescription":"",
     "ignore":[
         "changelog.md",
-        ".github/ISSUE_TEMPLATE/*",
+        ".github/ISSUE_TEMPLATE",
         ".github/workflows/*",
         ".github/CONTRIBUTING.md",
         ".github/FUNDING.YML",
