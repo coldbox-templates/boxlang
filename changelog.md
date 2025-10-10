@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [8.1.0] - 2025-10-10
+
 ## [8.0.0] - 2025-10-10
 
 ### Added
@@ -21,7 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First creation of the changelog file.
 
-[unreleased]: https://github.com/coldbox-templates/boxlang/compare/v8.0.0...HEAD
+[unreleased]: https://github.com/coldbox-templates/boxlang/compare/v8.1.0...HEAD
+[8.1.0]: https://github.com/coldbox-templates/boxlang/compare/v8.0.0...v8.1.0
 [8.0.0]: https://github.com/coldbox-templates/boxlang/compare/v1.0.0...v8.0.0
 [1.0.0]: https://github.com/coldbox-templates/boxlang/compare/v1.1.0...v1.0.0
 [1.1.0]: https://github.com/coldbox-templates/bx-default/compare/v1.0.0...v1.1.0
