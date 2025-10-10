@@ -100,7 +100,7 @@ class {
 			filelog    : {
 				class      : "coldbox.system.logging.appenders.RollingFileAppender",
 				properties : { filename : "app", filePath : "/app/logs" }
-			}
+			},
 			// Root Logger
 			root      : { levelmax : "INFO", appenders : "*" },
 			// Implicit Level Categories
