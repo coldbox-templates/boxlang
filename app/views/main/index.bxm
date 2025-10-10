@@ -116,7 +116,7 @@
 
 				<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
 					<a
-						href="#getSetting( "appMapping" )#/tests/index.bxm"
+						href="#event.buildLink( "tests" )#"
 						class="btn btn-dark btn-lg"
 						role="button"
 						target="_blank"
@@ -126,7 +126,7 @@
 					</a>
 
 					<a
-						href="#getSetting( "appMapping" )#/tests/runner.bxm"
+						href="#event.buildLink( "tests" )#/runner.bxm"
 						class="btn btn-dark btn-lg"
 						role="button"
 						target="_blank"
