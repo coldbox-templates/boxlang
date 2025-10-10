@@ -15,10 +15,11 @@
             "enable":true
         },
         "aliases":{
+			"/coldbox/system/exceptions":"./lib/coldbox/system/exceptions/",
             "/tests":"./tests/"
         }
     },
     "scripts":{
-        "onServerInitialInstall":"install bx-esapi,bx-mysql"
+        "onServerInitialInstall":"install bx-esapi"
     }
 }

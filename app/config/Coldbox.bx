@@ -23,7 +23,7 @@ class {
 			reinitKey                : "fwreinit",
 			handlersIndexAutoReload  : true,
 			// Implicit Events
-			defaultEvent             : "",
+			defaultEvent             : "Main.index",
 			requestStartHandler      : "Main.onRequestStart",
 			requestEndHandler        : "",
 			applicationStartHandler  : "Main.onAppInit",
@@ -97,6 +97,10 @@ class {
 		variables.logBox = {
 			// Define Appenders
 			appenders : { coldboxTracer : { class : "coldbox.system.logging.appenders.ConsoleAppender" } },
+			filelog    : {
+				class      : "coldbox.system.logging.appenders.RollingFileAppender",
+				properties : { filename : "app", filePath : "/app/logs" }
+			}
 			// Root Logger
 			root      : { levelmax : "INFO", appenders : "*" },
 			// Implicit Level Categories

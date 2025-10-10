@@ -2,6 +2,7 @@
 .DS_Store
 settings.xml
 WEB-INF
+build/**
 
 # Engines + Database + CBFS + Secrets
 .tmp/**
@@ -9,6 +10,9 @@ WEB-INF
 .engine/**
 .cbfs/**
 docker/.db/**
+
+# Vite
+/public/includes/build/**
 
 # logs + tests
 app/logs/**
