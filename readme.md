@@ -33,7 +33,7 @@ Before getting started, ensure you have the following installed on your operatin
 1. **BoxLang OS** - Operating System Binary
    - 📥 Installation: <https://boxlang.ortusbooks.com/getting-started/installation>
    - 📌 Minimum Version: 1.0+
-   - 🎯 Used for: running BoxLang applications and scripts at the operating system level
+   - 🎯 Used for: running BoxLang CLI applications and scripts at the operating system level
 2. **CommandBox** - CLI toolchain, package manager, and server runtime
    - 📥 Installation: <https://commandbox.ortusbooks.com/setup/installation>
    - 📌 Minimum Version: 6.0+
