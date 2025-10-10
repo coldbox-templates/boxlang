@@ -1,6 +1,6 @@
 {
     "name":"Default ColdBox App Template For BoxLang",
-    "version":"8.0.0",
+    "version":"8.1.0",
     "author":"You",
     "location":"forgeboxStorage",
     "slug":"cbtemplate-boxlang",
@@ -10,23 +10,21 @@
     "keywords":"boxlang",
     "shortDescription":"",
     "ignore":[
-		"changelog.md",
-		".github/ISSUE_TEMPLATE/*",
-		".github/workflows/*",
-		".github/CONTRIBUTING.md",
-		".github/FUNDING.YML",
-		".github/PULL_REQUEST_TEMPLATE.md"
-	],
+        "changelog.md",
+        ".github/ISSUE_TEMPLATE/*",
+        ".github/workflows/*",
+        ".github/CONTRIBUTING.md",
+        ".github/FUNDING.YML",
+        ".github/PULL_REQUEST_TEMPLATE.md"
+    ],
     "dependencies":{
         "coldbox":"be"
     },
     "devDependencies":{
-		"route-visualizer":"^2.2.0+2",
+        "route-visualizer":"^2.2.0+2",
         "testbox":"*",
         "commandbox-boxlang":"*",
-        "commandbox-cfformat":"*",
-		"coldbox-cli":"*",
-		"testbox-cli":"*"
+        "commandbox-cfformat":"*"
     },
     "installPaths":{
         "coldbox":"runtime/lib/coldbox/",
