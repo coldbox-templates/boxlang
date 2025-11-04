@@ -15,7 +15,7 @@
             "enable":true
         },
         "aliases":{
-            "/coldbox/system/exceptions":"./lib/coldbox/system/exceptions/",
+            "/coldbox/system/exceptions":"./runtime/lib/coldbox/system/exceptions/",
             "/tests":"./tests/"
         }
     },
