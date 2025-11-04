@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Location of ColdBox assets in server.json
+
 ## [8.2.0] - 2025-10-10
 
 ## [8.1.1] - 2025-10-10
