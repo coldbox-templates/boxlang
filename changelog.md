@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [8.3.0] - 2025-11-04
+
 ### Fixed
 
 - Location of ColdBox assets in server.json
@@ -35,7 +37,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First creation of the changelog file.
 
-[unreleased]: https://github.com/coldbox-templates/boxlang/compare/v8.2.0...HEAD
+[unreleased]: https://github.com/coldbox-templates/boxlang/compare/v8.3.0...HEAD
+[8.3.0]: https://github.com/coldbox-templates/boxlang/compare/v8.2.0...v8.3.0
 [8.2.0]: https://github.com/coldbox-templates/boxlang/compare/v8.1.1...v8.2.0
 [8.1.1]: https://github.com/coldbox-templates/boxlang/compare/v8.1.0...v8.1.1
 [8.1.0]: https://github.com/coldbox-templates/boxlang/compare/v8.0.0...v8.1.0
