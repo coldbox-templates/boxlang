@@ -25,7 +25,12 @@ npm-debug.log
 yarn-error.log
 
 ## Ignored Dependencies
-effective-pom.xml
-runtime/lib/**
-runtime/java/**
 .devcontainer/.db/**
+effective-pom.xml
+
+## Global Libs
+lib/**
+!lib/java/
+!lib/java/.gitkeep
+!lib/modules/
+!lib/modules/.gitkeep

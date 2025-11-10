@@ -8,7 +8,7 @@
     "type":"mvc",
     "language":"boxlang",
     "keywords":"boxlang",
-    "shortDescription":"",
+    "shortDescription":"This is the default ColdBox Application Template for BoxLang projects.",
     "ignore":[
         "changelog.md",
         ".github/ISSUE_TEMPLATE",
@@ -21,19 +21,22 @@
         "coldbox":"^8.0.0"
     },
     "devDependencies":{
-        "route-visualizer":"^2.2.0+2",
+        "route-visualizer":"*",
         "testbox":"*",
         "commandbox-boxlang":"*",
         "commandbox-cfformat":"*"
+    },
+	"installPathConventions":{
+        "modules":"runtime/lib/modules"
     },
     "installPaths":{
         "coldbox":"runtime/lib/coldbox/",
         "testbox":"runtime/lib/testbox/"
     },
     "scripts":{
-        "format":"cfformat run app/**/*.bx,tests/specs/,*.bx --overwrite",
-        "format:check":"cfformat check app/**/*.bx,tests/specs/,*.bx ./.cfformat.json",
-        "format:watch":"cfformat watch path='app/**/*.bx,tests/specs/,*.bx' settingsPath='.cfformat.json'",
+        "format":"cfformat run app/,tests/specs/,*.bx --overwrite --verbose",
+        "format:check":"cfformat check app/,tests/specs/,*.bx ./.cfformat.json --verbose",
+        "format:watch":"cfformat watch path='app/,tests/specs/,*.bx' settingsPath='.cfformat.json'",
         "docker:build":"!docker build --no-cache -t my-coldbox-app -f ./docker/Dockerfile ./",
         "docker:run":"!docker run -it -p 8080:8080 my-coldbox-app",
         "docker:bash":"!docker run -it my-coldbox-app /bin/bash",
