@@ -25,12 +25,13 @@ class {
 		variables.projectName = variables.boxJSON.slug ?: "coldbox-app";
 		variables.projectVersion = variables.boxJSON.version ?: "1.0.0";
 
-		// Source directories to package
+		// Source to package
 		variables.sources = [
 			".cbmigrations.json",
 			"box.json",
+			"server.json",
 			"app",
-			"modules",
+			"lib",
 			"public",
 			"runtime"
 		];
