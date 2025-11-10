@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [8.4.0] - 2025-11-10
+
 ### Added
 
 - Simplified `robots.txt` file due to web crawlers no longer needing complex rules
@@ -55,7 +57,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - ColdBox 8 readyness
 
-[unreleased]: https://github.com/coldbox-templates/boxlang/compare/v8.3.0...HEAD
+[unreleased]: https://github.com/coldbox-templates/boxlang/compare/v8.4.0...HEAD
+[8.4.0]: https://github.com/coldbox-templates/boxlang/compare/v8.3.0...v8.4.0
 [8.3.0]: https://github.com/coldbox-templates/boxlang/compare/v8.2.0...v8.3.0
 [8.2.0]: https://github.com/coldbox-templates/boxlang/compare/v8.1.0...v8.2.0
 [8.1.0]: https://github.com/coldbox-templates/boxlang/compare/v8.0.0...v8.1.0
