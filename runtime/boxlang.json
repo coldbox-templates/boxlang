@@ -20,7 +20,7 @@
 	"debugMode": "${BOXLANG_DEBUG:false}",
 	// This setting if enabled will remove all the class files from the class generation directory
 	// This is useful for debugging and testing, but not recommended for production
-	"clearClassFilesOnStartup": false,
+	"clearClassFilesOnStartup": true,
 	// This enables the class locations cache for the runtime.  It's used when resolving class paths
 	// mostly using mappings, per request mappings, etc.
 	// We recommend you always enable this setting, unless debugging a very specific issue
@@ -61,10 +61,10 @@
 	"mappings": {
 		"/app" :  {"path": "${user-dir}/app", "external": false },
 		"/public" : "${user-dir}/public",
-		"/coldbox" :  {"path": "${user-dir}/runtime/lib/coldbox", "external": false },
-		"/coldbox/system/exceptions" :  {"path": "${user-dir}/runtime/lib/coldbox/system/exceptions", "external": true },
-		"/modules" :  {"path": "${user-dir}/modules", "external": true },
-		"/testbox" :  "${user-dir}/runtime/lib/testbox",
+		"/coldbox" :  {"path": "${user-dir}/lib/coldbox", "external": false },
+		"/coldbox/system/exceptions" :  {"path": "${user-dir}/lib/coldbox/system/exceptions", "external": true },
+		"/modules" :  {"path": "${user-dir}/lib/modules", "external": true },
+		"/testbox" :  "${user-dir}/lib/testbox",
 		"/tests" : "${user-dir}/tests"
 	},
 	// A collection of BoxLang module directories, they must be absolute paths or expanded paths
@@ -86,7 +86,7 @@
 	// A collection of directories we will class load all Java *.jar files from
 	"javaLibraryPaths": [
 		"${boxlang-home}/lib",
-		"${user-dir}/runtime/lib"
+		"${user-dir}/lib/java"
 	],
 	// Logging Settings for the runtime
 	"logging": {
