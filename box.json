@@ -26,12 +26,13 @@
         "commandbox-boxlang":"*",
         "commandbox-cfformat":"*"
     },
-	"installPathConventions":{
-        "modules":"runtime/lib/modules"
+    "installPathConventions":{
+        "modules":"lib/modules"
     },
     "installPaths":{
-        "coldbox":"runtime/lib/coldbox/",
-        "testbox":"runtime/lib/testbox/"
+        "coldbox":"lib/coldbox/",
+        "testbox":"lib/testbox/",
+        "route-visualizer":"lib/modules/route-visualizer/"
     },
     "scripts":{
         "format":"cfformat run app/,tests/specs/,*.bx --overwrite --verbose",
