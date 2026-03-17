@@ -1,6 +1,6 @@
 {
     "name":"Default ColdBox App Template For BoxLang",
-    "version":"8.5.0",
+    "version":"8.6.0",
     "author":"You",
     "location":"forgeboxStorage",
     "slug":"cbtemplate-boxlang",
@@ -44,6 +44,6 @@
         "docker:stack":"!docker compose -f docker/docker-compose.yaml ${1}"
     },
     "testbox":{
-        "runner": "/tests/runner.bxm"
+        "runner":"/tests/runner.bxm"
     }
 }
