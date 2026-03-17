@@ -21,8 +21,8 @@
         "coldbox":"^8.0.0"
     },
     "devDependencies":{
-        "route-visualizer":"*",
         "testbox":"*",
+        "route-visualizer":"*",
         "commandbox-boxlang":"*",
         "commandbox-cfformat":"*"
     },
@@ -44,6 +44,6 @@
         "docker:stack":"!docker compose -f docker/docker-compose.yaml ${1}"
     },
     "testbox":{
-        "runner":"/tests/runner.bxm"
+        "runner": "/tests/runner.bxm"
     }
 }
