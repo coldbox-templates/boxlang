@@ -53,14 +53,14 @@ class {
 			autoMapModels            : true,
 			// Auto converts a json body payload into the RC
 			jsonPayloadToRC          : true
-		};
+		}
 
 		/**
 		 * --------------------------------------------------------------------------
 		 * Custom Settings
 		 * --------------------------------------------------------------------------
 		 */
-		variables.settings = {};
+		variables.settings = {}
 
 		/**
 		 * --------------------------------------------------------------------------
@@ -85,7 +85,7 @@ class {
 			include : [],
 			// An array of modules names to NOT load, empty means none
 			exclude : []
-		};
+		}
 
 		/**
 		 * --------------------------------------------------------------------------
@@ -105,21 +105,21 @@ class {
 			root      : { levelmax : "INFO", appenders : "*" },
 			// Implicit Level Categories
 			info      : [ "coldbox.system" ]
-		};
+		}
 
 		/**
 		 * --------------------------------------------------------------------------
 		 * Layout Settings
 		 * --------------------------------------------------------------------------
 		 */
-		variables.layoutSettings = { defaultLayout : "", defaultView : "" };
+		variables.layoutSettings = { defaultLayout : "", defaultView : "" }
 
 		/**
 		 * --------------------------------------------------------------------------
 		 * Custom Interception Points
 		 * --------------------------------------------------------------------------
 		 */
-		variables.interceptorSettings = { customInterceptionPoints : [] };
+		variables.interceptorSettings = { customInterceptionPoints : [] }
 
 		/**
 		 * --------------------------------------------------------------------------
@@ -127,7 +127,7 @@ class {
 		 * --------------------------------------------------------------------------
 		 * Remember that the order of declaration is the order they will be registered and fired
 		 */
-		variables.interceptors = [];
+		variables.interceptors = []
 
 		/**
 		 * --------------------------------------------------------------------------
@@ -142,7 +142,7 @@ class {
 		 *
 		 * }
 		 */
-		variables.moduleSettings = {};
+		variables.moduleSettings = {}
 
 		/**
 		 * --------------------------------------------------------------------------
@@ -157,7 +157,7 @@ class {
 			inflateToPRC : false, // automatically inflate flash data into the PRC scope
 			autoPurge    : true, // automatically purge flash data for you
 			autoSave     : true // automatically save flash scopes at end of a request and on relocations.
-		};
+		}
 
 		/**
 		 * --------------------------------------------------------------------------
@@ -170,7 +170,7 @@ class {
 			layoutsLocation  : "layouts",
 			modelsLocation   : "models",
 			eventAction      : "index"
-		};
+		}
 	}
 
 	/**
@@ -178,7 +178,7 @@ class {
 	 */
 	function development(){
 		// coldbox.customErrorTemplate = "/coldbox/system/exceptions/BugReport.cfm"; // static bug reports
-		variables.coldbox.customErrorTemplate = "/coldbox/system/exceptions/Whoops.cfm"; // interactive bug report
+		variables.coldbox.customErrorTemplate = "/coldbox/system/exceptions/Whoops.cfm"
 	}
 
 }
