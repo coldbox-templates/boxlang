@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [8.7.0] - 2026-05-20
+
 ## [8.6.0] - 2026-05-01
 
 ## [8.5.0] - 2026-03-17
@@ -61,7 +63,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - ColdBox 8 readyness
 
-[unreleased]: https://github.com/coldbox-templates/boxlang/compare/v8.6.0...HEAD
+[unreleased]: https://github.com/coldbox-templates/boxlang/compare/v8.7.0...HEAD
+[8.7.0]: https://github.com/coldbox-templates/boxlang/compare/v8.6.0...v8.7.0
 [8.6.0]: https://github.com/coldbox-templates/boxlang/compare/v8.5.0...v8.6.0
 [8.5.0]: https://github.com/coldbox-templates/boxlang/compare/v8.4.0...v8.5.0
 [8.4.0]: https://github.com/coldbox-templates/boxlang/compare/v8.3.0...v8.4.0
