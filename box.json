@@ -1,6 +1,6 @@
 {
-    "name":"Default ColdBox App Template For BoxLang",
-    "version":"8.6.0",
+    "name":"The default starter template for a ColdBox application using BoxLang",
+    "version":"8.7.0",
     "author":"You",
     "location":"forgeboxStorage",
     "slug":"cbtemplate-boxlang",
@@ -8,7 +8,7 @@
     "type":"mvc",
     "language":"boxlang",
     "keywords":"boxlang",
-    "shortDescription":"This is the default ColdBox Application Template for BoxLang projects.",
+    "shortDescription":"The default starter template for a ColdBox application using BoxLang",
     "ignore":[
         "changelog.md",
         ".github/ISSUE_TEMPLATE",
@@ -23,8 +23,7 @@
     "devDependencies":{
         "testbox":"*",
         "route-visualizer":"*",
-        "commandbox-boxlang":"*",
-        "commandbox-cfformat":"*"
+        "commandbox-boxlang":"*"
     },
     "installPathConventions":{
         "modules":"lib/modules"
@@ -35,9 +34,8 @@
         "route-visualizer":"lib/modules/route-visualizer/"
     },
     "scripts":{
-        "format":"cfformat run app/,tests/specs/,*.bx --overwrite --verbose",
-        "format:check":"cfformat check app/,tests/specs/,*.bx ./.cfformat.json --verbose",
-        "format:watch":"cfformat watch path='app/,tests/specs/,*.bx' settingsPath='.cfformat.json'",
+        "format":"!boxlang format --source app/,tests/specs/,*.bx",
+        "format:check":"!boxlang format --check --source app/,tests/specs/,*.bx",
         "docker:build":"!docker build --no-cache -t my-coldbox-app -f ./docker/Dockerfile ./",
         "docker:run":"!docker run -it -p 8080:8080 my-coldbox-app",
         "docker:bash":"!docker run -it my-coldbox-app /bin/bash",
