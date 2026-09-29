@@ -1,6 +1,6 @@
 {
     "name":"The default starter template for a ColdBox application using BoxLang",
-    "version":"8.7.0",
+    "version":"8.8.0",
     "author":"You",
     "location":"forgeboxStorage",
     "slug":"cbtemplate-boxlang",
@@ -18,7 +18,7 @@
         ".github/PULL_REQUEST_TEMPLATE.md"
     ],
     "dependencies":{
-        "coldbox":"^8.0.0"
+        "coldbox":"^8.2.0"
     },
     "devDependencies":{
         "testbox":"*",

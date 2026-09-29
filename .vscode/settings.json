@@ -1,14 +1,6 @@
 {
-	"boxlang.cfml.mappings": [
-		{
-			"logicalPath": "/coldbox",
-			"directoryPath": "./lib/coldbox",
-			"isPhysicalDirectoryPath" :false
-		},
-		{
-			"logicalPath": "/testbox",
-			"directoryPath": "./lib/testbox",
-			"isPhysicalDirectoryPath" :false
-		}
-	]
+	"boxlang.mappings": {
+		"coldbox" : "./lib/coldbox",
+		"testbox" : "./lib/testbox"
+	}
 }
