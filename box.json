@@ -1,6 +1,6 @@
 {
     "name":"The default starter template for a ColdBox application using BoxLang",
-    "version":"8.8.0",
+    "version":"8.9.0",
     "author":"You",
     "location":"forgeboxStorage",
     "slug":"cbtemplate-boxlang",
